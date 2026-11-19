@@ -1,1 +1,855 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bab 1: Pertumbuhan dan Pembangunan Ekonomi</title>
+  <!-- Google Fonts & Font Awesome Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
+  <style>
+    /* ==========================================================================
+       PALET WARNA RESMI
+       ========================================================================== */
+    :root {
+      --c-ungu: #9207a5;
+      --c-biru: #0000ff;
+      --c-hijau-muda: #00ff00;
+      --c-kuning: #ffff0d;
+      --c-oranye: #ff9900;
+      --c-merah: #cc0000;
+      --c-hijau-tua: #008200;
+      --bg-light: #f8fafc;
+      --text-dark: #0f172a;
+      --text-muted: #475569;
+      --card-bg: #ffffff;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* --- ANIMASI IKON --- */
+    @keyframes icon-bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+    @keyframes icon-pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.18); } }
+    @keyframes icon-spin-slow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    @keyframes icon-wiggle { 0%, 100% { transform: rotate(0deg); } 25% { transform: rotate(-12deg); } 75% { transform: rotate(12deg); } }
+    .anim-bounce { display: inline-block; animation: icon-bounce 2s infinite ease-in-out; }
+    .anim-pulse { display: inline-block; animation: icon-pulse 1.8s infinite ease-in-out; }
+    .anim-spin { display: inline-block; animation: icon-spin-slow 7s linear infinite; }
+    .anim-wiggle { display: inline-block; animation: icon-wiggle 1.5s ease-in-out infinite; }
+
+    /* --- HEADER UTAMA --- */
+    .hero-header {
+      background: linear-gradient(135deg, var(--c-biru) 0%, var(--c-ungu) 50%, var(--c-merah) 100%);
+      color: #ffffff;
+      padding: 45px 20px 30px;
+      text-align: center;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+    }
+    .hero-header h1 { font-size: 2.2rem; font-weight: 900; margin-bottom: 8px; text-transform: uppercase; }
+    .hero-header p { font-size: 1.05rem; font-weight: 500; }
+
+    /* --- NAVIGASI HORIZONTAL --- */
+    .nav-container-sticky {
+      position: sticky; top: 0; z-index: 1000; background: #ffffff;
+      border-bottom: 4px solid var(--c-oranye); box-shadow: 0 4px 18px rgba(0,0,0,0.08); padding: 12px 16px;
+    }
+    .horizontal-menu {
+      display: flex; justify-content: center; align-items: center; gap: 12px;
+      list-style: none; flex-wrap: nowrap; overflow-x: auto; padding-bottom: 4px;
+    }
+    .horizontal-menu::-webkit-scrollbar { height: 6px; }
+    .horizontal-menu::-webkit-scrollbar-thumb { background: var(--c-oranye); border-radius: 6px; }
+    .menu-box-item { perspective: 1000px; flex-shrink: 0; }
+    .menu-btn {
+      display: inline-flex; align-items: center; gap: 8px; padding: 12px 18px;
+      border-radius: 12px; font-weight: 800; font-size: 0.9rem; text-decoration: none;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.16); transform-style: preserve-3d;
+      transition: transform 2.5s ease-in-out, box-shadow 0.4s ease; cursor: pointer; white-space: nowrap;
+    }
+    .menu-box-item:hover .menu-btn { transform: rotateY(360deg); box-shadow: 0 8px 20px rgba(0,0,0,0.28); }
+
+    /* Warna Menu */
+    .btn-tp1 { background-color: var(--c-ungu); color: #ffffff; }
+    .btn-tp2 { background-color: var(--c-biru); color: #ffffff; }
+    .btn-tp3 { background-color: var(--c-merah); color: #ffffff; }
+    .btn-lkpd { background-color: var(--c-kuning); color: #1a1a1a; }
+    .btn-kuis { background-color: var(--c-hijau-muda); color: #0f172a; }
+    .btn-refleksi { background-color: var(--c-hijau-tua); color: #ffffff; }
+
+    /* --- KONTEN CONTAINER --- */
+    .main-wrapper { max-width: 1200px; margin: 30px auto 60px; padding: 0 20px; display: flex; flex-direction: column; gap: 40px; }
+    
+    .tp-card { background: var(--card-bg); border-radius: 20px; box-shadow: 0 8px 25px rgba(0,0,0,0.06); overflow: hidden; }
+    .card-header-tp1 { background: linear-gradient(90deg, var(--c-ungu), #640073); color: white; }
+    .card-header-tp2 { background: linear-gradient(90deg, var(--c-biru), #0055ff); color: white; }
+    .card-header-tp3 { background: linear-gradient(90deg, var(--c-merah), var(--c-oranye)); color: white; }
+    .card-header-lkpd { background: linear-gradient(90deg, #d97706, #b45309); color: white; }
+    .card-header-kuis { background: linear-gradient(90deg, var(--c-hijau-tua), #047857); color: white; }
+    .card-header-refleksi { background: linear-gradient(90deg, #475569, #1e293b); color: white; }
+    
+    .card-header { padding: 24px 28px; display: flex; align-items: center; gap: 16px; }
+    .header-icon { font-size: 2.2rem; background: rgba(255,255,255,0.2); width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 16px; }
+    .card-header h2 { font-size: 1.5rem; font-weight: 800; }
+    .card-body { padding: 28px; }
+
+    .tp-meta-box { background: #f1f5f9; border-left: 6px solid var(--c-biru); border-radius: 12px; padding: 16px 20px; margin-bottom: 24px; }
+    .tp-meta-box.orange-accent { border-left-color: var(--c-oranye); }
+    .tp-meta-box.purple-accent { border-left-color: var(--c-ungu); }
+
+    .key-question { background: linear-gradient(90deg, #fffbeb, #fef3c7); border: 2px dashed var(--c-oranye); border-radius: 12px; padding: 14px 18px; margin: 16px 0; font-size: 1.05rem; font-weight: 700; color: #78350f; display: flex; align-items: center; gap: 12px; }
+
+    .content-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin: 24px 0; }
+
+    .info-card { background: #ffffff; border-radius: 16px; padding: 22px; border-top: 6px solid var(--c-biru); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); }
+    .info-card.border-ungu { border-top-color: var(--c-ungu); }
+    .info-card.border-biru { border-top-color: var(--c-biru); }
+    .info-card.border-hijau-muda { border-top-color: var(--c-hijau-muda); }
+    .info-card.border-oranye { border-top-color: var(--c-oranye); }
+    .info-card.border-merah { border-top-color: var(--c-merah); }
+    .info-card.border-hijau-tua { border-top-color: var(--c-hijau-tua); }
+    
+    .card-title-bar { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+    .card-title-bar i { font-size: 1.3rem; }
+    .card-title-bar h3 { font-size: 1.15rem; font-weight: 800; }
+
+    .steps-container { display: flex; flex-direction: column; gap: 14px; margin: 20px 0; }
+    .step-box { display: flex; align-items: center; gap: 16px; padding: 16px 20px; border-radius: 14px; color: #ffffff; font-weight: 600; }
+    .step-1 { background: linear-gradient(90deg, var(--c-merah), #e60000); }
+    .step-2 { background: linear-gradient(90deg, var(--c-oranye), #ffa726); }
+    .step-3 { background: linear-gradient(90deg, var(--c-hijau-tua), #00a800); }
+    .step-number { background: rgba(255, 255, 255, 0.3); width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; font-weight: 900; flex-shrink: 0; }
+
+    .formula-display { background: #0f172a; color: #38bdf8; padding: 16px; border-radius: 12px; font-family: 'Courier New', Courier, monospace; font-size: 1.15rem; text-align: center; margin: 16px 0; border: 2px solid var(--c-biru); }
+
+    /* Flow Comparison (TP 2) */
+    .flow-comparison { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 16px; margin: 20px 0; }
+    .flow-card { flex: 1; min-width: 260px; padding: 20px; border-radius: 16px; text-align: center; color: white; }
+    .flow-arrow { font-size: 2rem; color: var(--c-oranye); }
+
+    /* Tables */
+    .table-container { overflow-x: auto; margin: 20px 0; border-radius: 14px; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06); }
+    .styled-table { width: 100%; border-collapse: collapse; font-size: 0.95rem; text-align: left; }
+    .styled-table thead tr { background: var(--c-ungu); color: #ffffff; }
+    .styled-table th, .styled-table td { padding: 14px 18px; }
+    .styled-table tbody tr { border-bottom: 1px solid #e2e8f0; transition: background 0.2s; }
+    .styled-table tbody tr:nth-of-type(even) { background-color: #f8fafc; }
+    .styled-table tbody tr:hover { background-color: #eef2ff; }
+    .badge-ipm-kategori { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 20px; font-weight: 800; font-size: 0.85rem; }
+    .cat-sangat-tinggi { background: var(--c-hijau-tua); color: white; }
+    .cat-tinggi { background: var(--c-biru); color: white; }
+    .cat-sedang { background: var(--c-oranye); color: white; }
+    .cat-rendah { background: var(--c-merah); color: white; }
+
+    /* Gini Scale */
+    .gini-scale { background: linear-gradient(90deg, var(--c-hijau-tua) 0%, var(--c-kuning) 50%, var(--c-merah) 100%); height: 24px; border-radius: 12px; margin: 15px 0 8px; position: relative; }
+    .gini-labels { display: flex; justify-content: space-between; font-size: 0.85rem; font-weight: 700; }
+
+    /* --- FORM & KUIS --- */
+    .quiz-section h3 { margin-top: 20px; margin-bottom: 10px; color: var(--c-biru); border-bottom: 2px solid #e2e8f0; padding-bottom: 8px; }
+    .mcq-item { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 15px; margin-bottom: 15px; }
+    .mcq-item p { font-weight: 700; margin-bottom: 10px; }
+    .mcq-options label { display: block; padding: 8px 12px; background: white; border: 1px solid #cbd5e1; border-radius: 8px; margin-bottom: 8px; cursor: pointer; transition: 0.2s; }
+    .mcq-options label:hover { background: #eff6ff; border-color: var(--c-biru); }
+    .mcq-options input { margin-right: 10px; }
+    
+    .match-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; background: #fffbeb; padding: 10px 15px; border-radius: 8px; border-left: 4px solid var(--c-oranye); }
+    .match-item select { padding: 8px; border-radius: 6px; border: 1px solid #ccc; font-family: inherit; max-width: 250px; }
+    
+    .essay-item { margin-bottom: 20px; }
+    .essay-item p { font-weight: 700; margin-bottom: 8px; }
+    .essay-item textarea { width: 100%; height: 80px; padding: 10px; border-radius: 8px; border: 1px solid #cbd5e1; font-family: inherit; resize: vertical; }
+    
+    .form-group { margin-bottom: 15px; }
+    .form-group label { display: block; font-weight: 700; margin-bottom: 5px; }
+    .form-group input { width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #cbd5e1; font-family: inherit; }
+    
+    .btn-submit { background: var(--c-hijau-tua); color: white; padding: 15px 30px; font-size: 1.1rem; font-weight: 800; border: none; border-radius: 12px; cursor: pointer; width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px; transition: 0.3s; }
+    .btn-submit:hover { background: #006000; transform: translateY(-2px); box-shadow: 0 6px 15px rgba(0,0,0,0.2); }
+
+    /* Kalkulator */
+    .calc-box { background: linear-gradient(135deg, #f0fdf4, #e0f2fe); border: 3px solid var(--c-hijau-tua); border-radius: 16px; padding: 24px; margin: 25px 0; }
+    .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+    .calc-input-group label { display: block; font-weight: 700; font-size: 0.9rem; margin-bottom: 6px; color: var(--text-dark); }
+    .calc-input-group input { width: 100%; padding: 10px 14px; border-radius: 10px; border: 2px solid #cbd5e1; font-size: 1rem; font-weight: 600; outline: none; }
+    .calc-btn { background: var(--c-hijau-tua); color: white; border: none; padding: 12px 24px; font-weight: 800; border-radius: 10px; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; transition: background 0.3s; }
+    .calc-result-box { margin-top: 16px; padding: 14px; background: #ffffff; border-radius: 10px; border-left: 5px solid var(--c-hijau-muda); font-weight: 700; }
+
+    /* LKPD Box */
+    .lkpd-box { background: #eff6ff; border: 2px dashed var(--c-biru); padding: 25px; border-radius: 16px; text-align: center; }
+
+    /* Footer */
+    footer { background: #0f172a; color: #94a3b8; text-align: center; padding: 30px 20px; border-top: 4px solid var(--c-ungu); }
+    
+    @media (max-width: 768px) {
+      .hero-header h1 { font-size: 1.6rem; }
+      .card-header { flex-direction: column; text-align: center; }
+      .header-icon { margin: 0 auto; }
+      .calc-grid { grid-template-columns: 1fr; }
+      .horizontal-menu { justify-content: flex-start; }
+      .menu-btn { padding: 10px 14px; font-size: 0.82rem; }
+      .flow-arrow { transform: rotate(90deg); }
+      .match-item { flex-direction: column; align-items: flex-start; gap: 10px; }
+      .match-item select { width: 100%; max-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="hero-header">
+    <h1><i class="fa-solid fa-chart-line anim-bounce" style="margin-right: 8px;"></i> BAB 1: Pertumbuhan dan Pembangunan Ekonomi</h1>
+    <p>Media Pembelajaran & Evaluasi Digital Interaktif</p>
+  </header>
+
+  <!-- NAVIGASI -->
+  <nav class="nav-container-sticky">
+    <ul class="horizontal-menu">
+      <li class="menu-box-item"><a href="#tp1" class="menu-btn btn-tp1"><i class="fa-solid fa-cake-candles anim-pulse"></i> <span>Materi TP 1</span></a></li>
+      <li class="menu-box-item"><a href="#tp2" class="menu-btn btn-tp2"><i class="fa-solid fa-user-graduate anim-bounce"></i> <span>Materi TP 2</span></a></li>
+      <li class="menu-box-item"><a href="#tp3" class="menu-btn btn-tp3"><i class="fa-solid fa-scale-balanced anim-wiggle"></i> <span>Materi TP 3</span></a></li>
+      <li class="menu-box-item"><a href="#lkpd" class="menu-btn btn-lkpd"><i class="fa-solid fa-file-pen anim-pulse"></i> <span>LKPD</span></a></li>
+      <li class="menu-box-item"><a href="#kuis" class="menu-btn btn-kuis"><i class="fa-solid fa-list-check anim-bounce"></i> <span>Kuis Interaktif</span></a></li>
+      <li class="menu-box-item"><a href="#refleksi" class="menu-btn btn-refleksi"><i class="fa-solid fa-lightbulb anim-spin"></i> <span>Refleksi</span></a></li>
+    </ul>
+  </nav>
+
+  <main class="main-wrapper">
+
+    <!-- ================== TP 1: PERTUMBUHAN EKONOMI ================== -->
+    <section id="tp1" class="tp-card">
+      <div class="card-header card-header-tp1">
+        <div class="header-icon"><i class="fa-solid fa-chart-pie anim-spin"></i></div>
+        <div>
+          <span style="display:inline-block; padding:4px 10px; background:rgba(255,255,255,0.25); border-radius:8px; font-size:0.75rem; font-weight:700; margin-bottom:4px;">Tujuan Pembelajaran 1</span>
+          <h2>Pertumbuhan Ekonomi & PDB Riil</h2>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="tp-meta-box purple-accent">
+          <strong><i class="fa-solid fa-bullseye anim-pulse"></i> Rumusan TP:</strong>
+          Peserta didik mampu menganalisis konsep pertumbuhan ekonomi dan PDB Riil, serta menghitung persentase laju pertambahan fisik barang/jasa dengan menggunakan Rumus Laju Pertumbuhan.
+        </div>
+        <div class="key-question">
+          <i class="fa-solid fa-circle-question fa-2x anim-wiggle" style="color: var(--c-oranye);"></i>
+          <span>Pertanyaan Kunci Siswa: <em>"Apakah 'kue ekonomi' negara kita bertambah besar secara fisik tahun ini?"</em></span>
+        </div>
+
+        <div class="content-grid">
+          <div class="info-card border-ungu">
+            <div class="card-title-bar" style="color: var(--c-ungu);">
+              <i class="fa-solid fa-birthday-cake anim-bounce"></i>
+              <h3>1. Konsep Pertumbuhan Ekonomi: "Kue Bolu Raksasa"</h3>
+            </div>
+            <p>Pertumbuhan ekonomi adalah bertambahnya jumlah fisik barang dan jasa yang berhasil dibuat oleh seluruh masyarakat di suatu negara dalam kurun waktu satu tahun.</p>
+            <div style="background: #faf5ff; padding: 12px; border-radius: 10px; margin-top: 10px;">
+              <p>Bayangkan seluruh hasil kerja pabrik, petani, dokter, dan penjahit di Indonesia dikumpulkan menjadi satu loyang kue bolu raksasa. Jika tahun lalu negara kita menghasilkan kue seberat 100 kg, lalu tahun ini berhasil membuat kue seberat 105 kg, maka ada pertambahan fisik sebesar 5 kg. Pertambahan fisik inilah yang disebut Pertumbuhan Ekonomi.</p>
+            </div>
+          </div>
+
+          <div class="info-card border-biru">
+            <div class="card-title-bar" style="color: var(--c-biru);">
+              <i class="fa-solid fa-scale-unbalanced-flip anim-wiggle"></i>
+              <h3>2. Mengapa Wajib Menggunakan PDB Riil? (Bukan PDB Nominal)</h3>
+            </div>
+            <p>Untuk mengukur ukuran "kue" tersebut, pemerintah menggunakan timbangan resmi bernama PDB (Produk Domestik Bruto). Namun, ada jebakan kenaikan harga (inflasi):</p>
+            <ul style="margin-left: 20px; margin-top: 8px; font-size: 0.95rem;">
+              <li style="margin-bottom: 6px;"><strong>PDB Nominal (Jebakan Harga):</strong> Tahun lalu warung menjual 100 mangkok bakso seharga Rp10.000 (Total Rp1.000.000). Tahun ini warung tetap hanya membuat 100 mangkok bakso, tetapi harganya dinaikkan menjadi Rp20.000 (Total Rp2.000.000). Uang di kasir tampak naik 2 kali lipat, tetapi fisik baksonya sama sekali tidak bertambah. Ini angka semu.</li>
+              <li><strong>PDB Riil (Timbangan Jujur):</strong> Menghitung total barang dengan cara mengunci harga memakai patokan harga tahun lalu (harga konstan). Karena harganya sudah dikunci, nilai PDB Riil hanya bisa naik jika jumlah fisik mangkok baksonya memang benar-benar bertambah banyak.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div id="rumus3langkah" style="margin-top: 25px;">
+          <h3 style="color: var(--c-merah); margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+            <i class="fa-solid fa-calculator anim-pulse"></i> 3. Menghitung Laju Pertumbuhan Ekonomi dengan "Rumus 3 Langkah"
+          </h3>
+          <p>Rumus matematis baku laju pertumbuhan ekonomi:</p>
+          <div class="formula-display">
+            R = [ (PDB Riil_t - PDB Riil_t-1) / PDB Riil_t-1 ] &times; 100%
+          </div>
+          <p style="margin-bottom: 10px;">Agar tidak membingungkan dan tidak salah memasukkan angka, gunakan Rumus 3 Langkah Berurutan:</p>
+
+          <div class="steps-container">
+            <div class="step-box step-1">
+              <div class="step-number">1</div>
+              <div>
+                <strong>Langkah 1: Kurangkan (Cari Selisih Fisik)</strong>
+                <p style="font-size: 0.9rem; opacity: 0.95;">Kurangkan PDB Riil Tahun Ini dengan PDB Riil Tahun Kemarin. (Tahun Ini - Kemarin).</p>
+              </div>
+            </div>
+            <div class="step-box step-2">
+              <div class="step-number">2</div>
+              <div>
+                <strong>Langkah 2: Bagikan (Bandingkan ke Titik Awal)</strong>
+                <p style="font-size: 0.9rem; opacity: 0.95;">Ambil hasil selisih Langkah 1, lalu bagikan dengan PDB Riil Tahun Kemarin. (Bagi Titik Awal/Kemarin).</p>
+              </div>
+            </div>
+            <div class="step-box step-3">
+              <div class="step-number">3</div>
+              <div>
+                <strong>Langkah 3: Kalikan (Ubah ke Persen)</strong>
+                <p style="font-size: 0.9rem; opacity: 0.95;">Ambil hasil desimal Langkah 2, lalu kalikan dengan 100%. (Kalikan 100%).</p>
+              </div>
+            </div>
+          </div>
+
+          <div style="background: #ecfeff; border: 2px solid #06b6d4; border-radius: 14px; padding: 18px; margin-top: 15px;">
+            <h4 style="color: #0e7490; margin-bottom: 8px;">
+              <i class="fa-solid fa-lightbulb anim-bounce"></i> Contoh Soal & Penerapan Rumus 3 Langkah:
+            </h4>
+            <p><strong>Data Statistik:</strong> PDB Riil Indonesia Tahun 2025 = Rp1.000 Triliun. PDB Riil Indonesia Tahun 2026 = Rp1.050 Triliun. Berapakah laju pertumbuhan ekonomi Indonesia tahun 2026?</p>
+            <ul style="margin-left: 24px; margin-top: 6px;">
+              <li><strong>Langkah 1:</strong> Kurangkan (Cari Tambahan Barangnya) &rarr; 1.050 - 1.000 = <strong>50 Triliun</strong>.</li>
+              <li><strong>Langkah 2:</strong> Bagikan (Bandingkan dengan Tahun Kemarin) &rarr; 50 / 1.000 = <strong>0,05</strong>.</li>
+              <li><strong>Langkah 3:</strong> Kalikan 100% (Jadikan Persen) &rarr; 0,05 &times; 100% = <strong>5%</strong>.</li>
+            </ul>
+            <p style="margin-top: 8px; font-weight: 700; color: #047857;">
+              <i class="fa-solid fa-circle-check"></i> Kesimpulan: Laju pertumbuhan ekonomi negara tersebut pada tahun 2026 adalah tumbuh positif sebesar 5%.
+            </p>
+          </div>
+        </div>
+
+        <div id="kalkulator" class="calc-box">
+          <h3 style="color: var(--c-hijau-tua); display: flex; align-items: center; gap: 8px;">
+            <i class="fa-solid fa-sliders anim-spin"></i> Simulasi Interaktif: Kalkulator Pertumbuhan Ekonomi
+          </h3>
+          <p style="font-size: 0.9rem; margin-bottom: 15px; color: var(--text-muted);">Masukkan angka PDB Riil untuk membuktikan perhitungan Rumus 3 Langkah secara otomatis:</p>
+          <div class="calc-grid">
+            <div class="calc-input-group">
+              <label>PDB Riil Tahun Lalu (t-1):</label>
+              <input type="number" id="pdbKemarin" value="1000">
+            </div>
+            <div class="calc-input-group">
+              <label>PDB Riil Tahun Ini (t):</label>
+              <input type="number" id="pdbIni" value="1050">
+            </div>
+          </div>
+          <button class="calc-btn" onclick="hitungPertumbuhan()"><i class="fa-solid fa-bolt"></i> Hitung Laju Sekarang</button>
+          <div id="hasilKalkulator" class="calc-result-box">Klik tombol di atas untuk melihat rincian kalkulasi.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================== TP 2: PEMBANGUNAN EKONOMI ================== -->
+    <section id="tp2" class="tp-card">
+      <div class="card-header card-header-tp2">
+        <div class="header-icon"><i class="fa-solid fa-users anim-pulse"></i></div>
+        <div>
+          <span style="display:inline-block; padding:4px 10px; background:rgba(255,255,255,0.25); border-radius:8px; font-size:0.75rem; font-weight:700; margin-bottom:4px;">Tujuan Pembelajaran 2</span>
+          <h2>Pembangunan Ekonomi & Kualitas Manusia (IPM)</h2>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="tp-meta-box">
+          <strong><i class="fa-solid fa-bullseye anim-pulse"></i> Rumusan TP:</strong>
+          Peserta didik mampu membedakan konsep pertumbuhan dan pembangunan ekonomi, serta mengevaluasi kualitas hidup manusia berdasarkan 3 indikator Indeks Pembangunan Manusia (kesehatan, pendidikan, dan standar hidup layak).
+        </div>
+        <div class="key-question">
+          <i class="fa-solid fa-circle-question fa-2x anim-wiggle" style="color: var(--c-biru);"></i>
+          <span>Pertanyaan Kunci Siswa: <em>"Apakah warganya makin pintar, sehat, dan hidup layak seiring bertambahnya uang negara?"</em></span>
+        </div>
+
+        <div class="content-grid">
+          <div class="info-card border-biru">
+            <div class="card-title-bar" style="color: var(--c-biru);">
+              <i class="fa-solid fa-arrow-up-right-dots anim-bounce"></i>
+              <h3>1. Pembangunan Ekonomi: Dari Benda Fisik Menuju Kualitas Manusia</h3>
+            </div>
+            <p>Pembangunan ekonomi adalah usaha sadar negara untuk meningkatkan kualitas dan taraf hidup seluruh rakyatnya.</p>
+            <ul style="margin-left: 20px; font-size: 0.95rem; margin-top: 8px;">
+              <li><strong>Pertumbuhan:</strong> Hanya mengukur benda mati dan uang (jumlah jalan tol, mobil, pabrik, beras).</li>
+              <li><strong>Pembangunan:</strong> Mengukur nasib manusianya (apakah warganya bebas dari kelaparan, berumur panjang, dan bersekolah tinggi).</li>
+            </ul>
+            <div style="background: #eff6ff; padding: 10px; border-radius: 8px; margin-top: 10px;">
+              <strong>Analogi Anak:</strong> Pertumbuhan adalah bertambah tingginya badan anak dari 130 cm menjadi 150 cm (fisik). Pembangunan adalah ketika anak tersebut bertambah sehat, bertambah cerdas pikirannya, dan memiliki budi pekerti luhur (kualitas diri).
+            </div>
+          </div>
+        </div>
+
+        <h3 style="margin-top: 25px; color: var(--c-ungu); display: flex; align-items: center; gap: 8px;">
+          <i class="fa-solid fa-arrows-split-up-and-left anim-spin"></i> 2. Hubungan Pembangunan Ekonomi dan IPM: "Usaha Nyata vs Buku Rapor"
+        </h3>
+        <p style="margin-bottom:10px;"><strong>Pembangunan Ekonomi adalah USANYA:</strong> Tindakan pemerintah membangun rumah sakit, membiayai sekolah gratis, dan membuka lapangan kerja. <br>
+        <strong>IPM (Indeks Pembangunan Manusia) adalah BUKU RAPORNYA:</strong> Alat timbang resmi untuk membuktikan apakah usaha pembangunan tersebut benar-benar berhasil mengubah hidup manusia menjadi lebih baik.</p>
+        
+        <div class="flow-comparison">
+          <div class="flow-card" style="background: linear-gradient(135deg, var(--c-biru), var(--c-ungu));">
+            <i class="fa-solid fa-hand-holding-medical fa-2x anim-bounce"></i>
+            <h4 style="margin: 8px 0;">PEMBANGUNAN EKONOMI</h4>
+            <p style="font-size: 0.85rem; opacity: 0.9;">(Usaha Nyata)</p>
+            <ul style="text-align: left; margin-top: 10px; font-size: 0.85rem; list-style-type: square; padding-left: 20px;">
+              <li>Bangun Sekolah</li>
+              <li>Bangun Rumah Sakit</li>
+              <li>Jaga Lapangan Kerja</li>
+            </ul>
+          </div>
+          <div class="flow-arrow">
+            <p style="font-size: 0.9rem; font-weight:bold; color: #475569;">Diukur<br>Melalui</p>
+            <i class="fa-solid fa-circle-arrow-right anim-wiggle"></i>
+          </div>
+          <div class="flow-card" style="background: linear-gradient(135deg, var(--c-hijau-tua), var(--c-oranye));">
+            <i class="fa-solid fa-graduation-cap fa-2x anim-pulse"></i>
+            <h4 style="margin: 8px 0;">IPM</h4>
+            <p style="font-size: 0.85rem; opacity: 0.9;">(Buku Rapor Keberhasilan)</p>
+            <ul style="text-align: left; margin-top: 10px; font-size: 0.85rem; list-style-type: square; padding-left: 20px;">
+              <li>Angka Harapan Hidup</li>
+              <li>Rata-rata Lama Sekolah</li>
+              <li>Standar Hidup Layak</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3 style="margin-top: 30px; margin-bottom: 15px; color: var(--c-merah); display: flex; align-items: center; gap: 8px;">
+          <i class="fa-solid fa-scale-balanced anim-pulse"></i> 3. Tiga Timbangan Mutlak Pembentuk Nilai IPM
+        </h3>
+        <div class="content-grid">
+          <div class="info-card border-merah">
+            <div class="card-title-bar" style="color: var(--c-merah);">
+              <i class="fa-solid fa-heart-pulse anim-pulse"></i>
+              <h3>Timbangan 1: Kesehatan (Umur Panjang dan Sehat)</h3>
+            </div>
+            <p><strong>Indikator:</strong> Angka Harapan Hidup saat Lahir (AHH).</p>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 6px;"><strong>Pertanyaan Pembuktian:</strong> "Berapa lama rata-rata bayi yang baru lahir di daerah ini bisa bertahan hidup?". Menandakan tersedianya makanan bergizi, air bersih, serta puskesmas dan obat-obatan yang memadai.</p>
+          </div>
+
+          <div class="info-card border-biru">
+            <div class="card-title-bar" style="color: var(--c-biru);">
+              <i class="fa-solid fa-book-open-reader anim-bounce"></i>
+              <h3>Timbangan 2: Pendidikan (Pengetahuan dan Keahlian)</h3>
+            </div>
+            <p><strong>Indikator:</strong> Harapan Lama Sekolah (HLS) untuk generasi muda dan Rata-rata Lama Sekolah (RLS) untuk penduduk dewasa (25 tahun ke atas).</p>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 6px;"><strong>Pertanyaan Pembuktian:</strong> "Berapa tahun warganya duduk di bangku sekolah formal?". Menandakan masyarakat memiliki ilmu pengetahuan agar tidak mudah dibodohi dan mampu bekerja secara mandiri.</p>
+          </div>
+
+          <div class="info-card border-oranye">
+            <div class="card-title-bar" style="color: var(--c-oranye);">
+              <i class="fa-solid fa-basket-shopping anim-wiggle"></i>
+              <h3>Timbangan 3: Standar Hidup Layak (Daya Beli Riil)</h3>
+            </div>
+            <p><strong>Indikator:</strong> Pengeluaran Riil per Kapita yang Disesuaikan.</p>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 6px;"><strong>Pertanyaan Pembuktian:</strong> "Apakah uang warga cukup untuk membeli makanan bergizi, pakaian, serta tempat tinggal yang layak?". Menandakan daya beli nyata keluarga biasa, bukan sekadar melihat kekayaan segelintir orang kaya.</p>
+          </div>
+        </div>
+
+        <div id="tabel-ipm" style="margin-top: 25px;">
+          <h3 style="color: var(--c-ungu); margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+            <i class="fa-solid fa-ranking-star anim-bounce"></i> 4. Skala Kategori Status IPM (Nilai 0 &ndash; 100)
+          </h3>
+          <div class="table-container">
+            <table class="styled-table">
+              <thead>
+                <tr>
+                  <th>Kategori Capaian</th>
+                  <th>Rentang Skor IPM</th>
+                  <th>Penjelasan Kondisi Nyata</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="badge-ipm-kategori cat-sangat-tinggi"><i class="fa-solid fa-crown"></i> Sangat Tinggi</span></td>
+                  <td><strong>&ge; 80</strong></td>
+                  <td>Fasilitas medis modern merata, penduduk mayoritas tuntas pendidikan tinggi, ekonomi mapan.</td>
+                </tr>
+                <tr>
+                  <td><span class="badge-ipm-kategori cat-tinggi"><i class="fa-solid fa-medal"></i> Tinggi</span></td>
+                  <td><strong>70 - 79,9</strong></td>
+                  <td>Fasilitas dasar terpenuhi, wajib belajar 12 tahun berjalan efektif, gizi tercukupi baik.</td>
+                </tr>
+                <tr>
+                  <td><span class="badge-ipm-kategori cat-sedang"><i class="fa-solid fa-triangle-exclamation"></i> Sedang</span></td>
+                  <td><strong>60 - 69,9</strong></td>
+                  <td>Sarana kesehatan dan sekolah tersedia, tetapi angka putus sekolah dan masalah gizi masih ditemukan.</td>
+                </tr>
+                <tr>
+                  <td><span class="badge-ipm-kategori cat-rendah"><i class="fa-solid fa-triangle-exclamation"></i> Rendah</span></td>
+                  <td><strong>&lt; 60</strong></td>
+                  <td>Kondisi darurat; fasilitas dokter minim, kemiskinan tinggi, dan angka buta huruf dominan.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================== TP 3: PEMERATAAN & KEADILAN ================== -->
+    <section id="tp3" class="tp-card">
+      <div class="card-header card-header-tp3">
+        <div class="header-icon"><i class="fa-solid fa-hand-holding-dollar anim-wiggle"></i></div>
+        <div>
+          <span style="display:inline-block; padding:4px 10px; background:rgba(255,255,255,0.25); border-radius:8px; font-size:0.75rem; font-weight:700; margin-bottom:4px;">Tujuan Pembelajaran 3</span>
+          <h2>Pemerataan Pendapatan & Keadilan Sosial (Rasio Gini & Solusi Digital)</h2>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="tp-meta-box orange-accent">
+          <strong><i class="fa-solid fa-bullseye anim-pulse"></i> Rumusan TP:</strong>
+          Peserta didik mampu menganalisis tingkat ketimpangan pembagian pendapatan (Rasio Gini/Kurva Lorenz) serta merumuskan alternatif solusi mengatasi kesenjangan ekonomi melalui kebijakan publik dan pemanfaatan teknologi digital.
+        </div>
+        <div class="key-question">
+          <i class="fa-solid fa-circle-question fa-2x anim-wiggle" style="color: var(--c-merah);"></i>
+          <span>Pertanyaan Kunci Siswa: <em>"Apakah kue ekonomi itu dinikmati bersama secara adil, dan bagaimana teknologi membantu pedagang kecil menikmatinya?"</em></span>
+        </div>
+
+        <div class="content-grid">
+          <div class="info-card border-merah">
+            <div class="card-title-bar" style="color: var(--c-merah);">
+              <i class="fa-solid fa-pizza-slice anim-spin"></i>
+              <h3>1. Masalah Pembagian Kue: Keadilan Distribusi Pendapatan</h3>
+            </div>
+            <p>Setelah "kue bolu ekonomi" berhasil dibuat membesar melalui Pertumbuhan Ekonomi, muncul pertanyaan terpenting: Kue itu dipotong untuk siapa?</p>
+            <p style="margin-top: 8px;">Jika satu orang konglomerat memakan 90% bagian kue sementara 100 warga lainnya berebut sisa remah-remah 10%, maka terjadi Ketimpangan Pendapatan Parah. Pertumbuhan ekonomi menjadi tidak bermakna jika kekayaan hanya menumpuk pada segelintir orang kaya.</p>
+          </div>
+
+          <div class="info-card border-ungu">
+            <div class="card-title-bar" style="color: var(--c-ungu);">
+              <i class="fa-solid fa-chart-area anim-pulse"></i>
+              <h3>2. Mengukur Keadilan: Kurva Lorenz dan Rasio Gini</h3>
+            </div>
+            <p><strong>Kurva Lorenz:</strong> Grafik lengkung yang memperlihatkan kenyataan pembagian pendapatan. Semakin garis kurvanya melengkung jauh ke bawah menjauhi garis diagonal lurus, tandanya pembagian rezeki di negara tersebut makin tidak adil.</p>
+            <p style="margin-top: 6px;"><strong>Rasio Gini (Koefisien Gini):</strong> Angka timbangan resmi berskala 0 sampai 1:</p>
+            <ul style="margin-left: 20px; font-size: 0.95rem;">
+              <li><strong>Angka 0 (Nol) = Keadilan Mutlak.</strong> Semua warga mendapatkan bagian pendapatan yang persis sama rata.</li>
+              <li><strong>Angka 1 (Satu) = Ketimpangan Sempurna.</strong> Seluruh uang dan kekayaan negara dikuasai oleh satu orang saja.</li>
+            </ul>
+            <div class="gini-scale"></div>
+            <div class="gini-labels">
+              <span style="color: var(--c-hijau-tua);">0 = Keadilan Mutlak</span>
+              <span style="color: var(--c-oranye);">&lt; 0,4 (Sehat & Merata)</span>
+              <span style="color: var(--c-merah);">1 = Ketimpangan Sempurna</span>
+            </div>
+            <p style="font-size: 0.9rem; margin-top: 8px;"><strong>Tolak Ukur:</strong> Semakin nilai Rasio Gini mendekati angka 0 (di bawah 0,4), kondisi distribusi pendapatan negara tersebut dikategorikan makin sehat dan merata.</p>
+          </div>
+        </div>
+
+        <div id="solusi-digital" style="margin-top: 25px;">
+          <h3 style="color: var(--c-hijau-tua); margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
+            <i class="fa-solid fa-shield-halved anim-bounce"></i> 3. Solusi Menutup Jurang Kesenjangan
+          </h3>
+
+          <div class="content-grid">
+            <div class="info-card border-biru">
+              <div class="card-title-bar" style="color: var(--c-biru);">
+                <i class="fa-solid fa-landmark anim-bounce"></i>
+                <h3>Pilar 1: Kebijakan Publik / Fiskal Negara</h3>
+              </div>
+              <ul style="margin-left: 20px; font-size: 0.95rem;">
+                <li style="margin-bottom: 8px;">
+                  <strong>Pajak Progresif:</strong> Menarik pajak dengan persentase lebih besar kepada orang-orang kaya dan perusahaan raksasa.
+                </li>
+                <li style="margin-bottom: 8px;">
+                  <strong>Belanja Pro-Rakyat:</strong> Memakai uang hasil pajak tadi untuk membangun jalan raya di desa tertinggal, menyediakan sekolah gratis, beasiswa, dan jaminan kesehatan bagi masyarakat prasejahtera.
+                </li>
+              </ul>
+            </div>
+
+            <div class="info-card border-hijau-muda">
+              <div class="card-title-bar" style="color: var(--c-hijau-tua);">
+                <i class="fa-solid fa-laptop-code anim-pulse"></i>
+                <h3>Pilar 2: Pemanfaatan Teknologi Digital (Solusi Masa Depan)</h3>
+              </div>
+              <ul style="margin-left: 20px; font-size: 0.95rem;">
+                <li style="margin-bottom: 8px;">
+                  <strong>Platform Jual-Beli (E-Commerce):</strong> Pedagang kerajinan tangan atau petani di desa pelosok tidak perlu menyewa ruko mahal di ibu kota; mereka bisa menjual produk langsung ke pembeli di seluruh Indonesia lewat internet.
+                </li>
+                <li style="margin-bottom: 8px;">
+                  <strong>Sistem Keuangan Digital (Fintech & QRIS):</strong> Memudahkan pelaku usaha mikro yang belum memiliki rekening bank formal untuk menerima pembayaran nontunai dan mengakses modal usaha tanpa terjerat rentenir.
+                </li>
+                <li>
+                  <strong>Efisiensi Rantai Distribusi:</strong> Aplikasi digital memangkas peran tengkulak yang sering mempermainkan harga beli dari petani kecil.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================== LKPD SECTION ================== -->
+    <section id="lkpd" class="tp-card">
+      <div class="card-header card-header-lkpd">
+        <div class="header-icon"><i class="fa-solid fa-file-pdf anim-pulse"></i></div>
+        <div>
+          <span style="display:inline-block; padding:4px 10px; background:rgba(255,255,255,0.25); border-radius:8px; font-size:0.75rem; font-weight:700; margin-bottom:4px;">Tugas Kelompok</span>
+          <h2>Lembar Kerja Peserta Didik (LKPD)</h2>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lkpd-box">
+          <i class="fa-solid fa-folder-open fa-3x" style="color: var(--c-oranye); margin-bottom:15px;"></i>
+          <h3 style="margin-bottom: 10px;">LKPD Analisis Kasus Ekonomi</h3>
+          <p style="margin-bottom: 15px;">Diskusikan bersama kelompokmu mengenai studi kasus ketimpangan pendapatan di daerah sekitarmu dan catat analisis pembangunan manusia menggunakan tabel observasi yang tersedia.</p>
+          <a href="#" style="display:inline-block; background:var(--c-oranye); color:white; padding:10px 20px; text-decoration:none; border-radius:8px; font-weight:bold;">
+            <i class="fa-solid fa-download"></i> Unduh File LKPD (PDF)
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================== KUIS INTERAKTIF SECTION ================== -->
+    <section id="kuis" class="tp-card">
+      <div class="card-header card-header-kuis">
+        <div class="header-icon"><i class="fa-solid fa-laptop-code anim-wiggle"></i></div>
+        <div>
+          <span style="display:inline-block; padding:4px 10px; background:rgba(255,255,255,0.25); border-radius:8px; font-size:0.75rem; font-weight:700; margin-bottom:4px;">Evaluasi Akhir</span>
+          <h2>Kuis Interaktif Bab 1</h2>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="form-group">
+          <label>Nama Lengkap:</label>
+          <input type="text" id="studentName" placeholder="Masukkan nama lengkap Anda..." required>
+        </div>
+        <div class="form-group">
+          <label>Nomor Absen:</label>
+          <input type="number" id="studentAbsen" placeholder="Contoh: 12" required>
+        </div>
+
+        <div class="quiz-section">
+          <h3>A. Pilihan Ganda (35 Soal)</h3>
+          <div id="mcq-container"></div>
+        </div>
+
+        <div class="quiz-section">
+          <h3>B. Menjodohkan (5 Soal)</h3>
+          <p style="font-size:0.9rem; color:gray; margin-bottom:15px;">Pilih pasangan jawaban yang tepat dari menu dropdown.</p>
+          <div id="match-container"></div>
+        </div>
+
+        <div class="quiz-section">
+          <h3>C. Esai (5 Soal)</h3>
+          <div id="essay-container"></div>
+        </div>
+
+        <button class="btn-submit" onclick="submitKuis()">
+          <i class="fa-brands fa-whatsapp"></i> Kirim Nilai ke WA Guru
+        </button>
+      </div>
+    </section>
+
+    <!-- ================== REFLEKSI SECTION ================== -->
+    <section id="refleksi" class="tp-card">
+      <div class="card-header card-header-refleksi">
+        <div class="header-icon"><i class="fa-solid fa-head-side-virus anim-pulse"></i></div>
+        <div>
+          <span style="display:inline-block; padding:4px 10px; background:rgba(255,255,255,0.25); border-radius:8px; font-size:0.75rem; font-weight:700; margin-bottom:4px;">Penutup</span>
+          <h2>Jurnal Refleksi Siswa</h2>
+        </div>
+      </div>
+      <div class="card-body">
+        <p style="margin-bottom:15px;">Tuliskan apa yang paling kamu pahami dari Bab ini dan bagian mana yang masih membingungkan!</p>
+        <div class="form-group">
+          <label>Nama Lengkap:</label>
+          <input type="text" id="refleksiName" placeholder="Masukkan nama...">
+        </div>
+        <div class="form-group">
+          <label>Catatan Refleksi Pembelajaran:</label>
+          <textarea id="refleksiText" style="width:100%; height:120px; padding:10px; border-radius:8px; border:1px solid #cbd5e1; font-family:inherit; resize:vertical;" placeholder="Hari ini saya belajar bahwa..."></textarea>
+        </div>
+        <button class="btn-submit" style="background:var(--c-biru);" onclick="kirimRefleksi()">
+          <i class="fa-brands fa-whatsapp"></i> Kirim Refleksi ke WA Guru
+        </button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================== JAVASCRIPT & DATA ================== -->
+  <script>
+    function hitungPertumbuhan() {
+      const pdbKemarin = parseFloat(document.getElementById('pdbKemarin').value);
+      const pdbIni = parseFloat(document.getElementById('pdbIni').value);
+      const hasilBox = document.getElementById('hasilKalkulator');
+
+      if (isNaN(pdbKemarin) || isNaN(pdbIni) || pdbKemarin <= 0) {
+        hasilBox.innerHTML = '<span style="color: var(--c-merah);"><i class="fa-solid fa-circle-exclamation"></i> Harap masukkan nilai PDB Riil yang valid dan lebih besar dari 0!</span>';
+        return;
+      }
+      const selisih = pdbIni - pdbKemarin; 
+      const rasio = selisih / pdbKemarin;  
+      const laju = rasio * 100;            
+
+      const statusIcon = laju >= 0 ? '<i class="fa-solid fa-arrow-trend-up anim-bounce" style="color: var(--c-hijau-tua);"></i>' : '<i class="fa-solid fa-arrow-trend-down anim-bounce" style="color: var(--c-merah);"></i>';
+      const statusTeks = laju >= 0 ? 'Tumbuh Positif' : 'Mengalami Kontraksi';
+
+      hasilBox.innerHTML = `
+        <div style="font-size: 1.05rem; margin-bottom: 8px;">
+          ${statusIcon} <strong>Hasil Laju Pertumbuhan: ${laju.toFixed(2)}% (${statusTeks})</strong>
+        </div>
+        <div style="font-size: 0.9rem; font-weight: normal; line-height: 1.5; color: var(--text-dark);">
+          <strong>Rincian Rumus 3 Langkah:</strong><br>
+          &bull; <strong>Langkah 1 (Selisih):</strong> ${pdbIni.toLocaleString('id-ID')} - ${pdbKemarin.toLocaleString('id-ID')} = <strong>${selisih.toLocaleString('id-ID')} Triliun</strong><br>
+          &bull; <strong>Langkah 2 (Bagi Titik Awal):</strong> ${selisih.toLocaleString('id-ID')} / ${pdbKemarin.toLocaleString('id-ID')} = <strong>${rasio.toFixed(4)}</strong><br>
+          &bull; <strong>Langkah 3 (Ubah ke Persen):</strong> ${rasio.toFixed(4)} &times; 100% = <strong>${laju.toFixed(2)}%</strong>
+        </div>
+      `;
+    }
+
+    const mcqData = [
+      { q: "1. Pertumbuhan ekonomi utamanya mengukur...", options: ["Peningkatan kesejahteraan rohani", "Peningkatan jumlah output fisik barang/jasa", "Distribusi pendapatan", "Pembangunan infrastruktur semata"], ans: 1 },
+      { q: "2. Indikator paling akurat untuk mengukur pertumbuhan ekonomi tanpa terpengaruh inflasi adalah...", options: ["PDB Nominal", "PDB Riil", "Pendapatan Per Kapita", "Tingkat Suku Bunga"], ans: 1 },
+      { q: "3. Jika PDB Nominal naik tapi PDB Riil tetap, apa yang terjadi?", options: ["Fisik barang bertambah", "Terjadi inflasi (harga naik)", "Pemerataan terjadi", "Negara makin makmur"], ans: 1 },
+      { q: "4. Rumus laju pertumbuhan ekonomi membandingkan PDB tahun ini dengan...", options: ["PDB 10 tahun lalu", "PDB tahun sebelumnya", "Jumlah penduduk", "Inflasi tahun ini"], ans: 1 },
+      { q: "5. Pembangunan ekonomi tidak hanya soal angka, melainkan juga...", options: ["Kualitas hidup & struktur ekonomi", "Banyaknya pabrik", "Jumlah uang beredar", "Ekspor bahan mentah"], ans: 0 },
+      { q: "6. Pertumbuhan ekonomi diibaratkan seperti...", options: ["Anak bertambah pintar", "Anak bertambah tinggi badannya", "Anak bertambah dewasa karakternya", "Anak lulus sekolah"], ans: 1 },
+      { q: "7. Tujuan akhir dari pembangunan ekonomi adalah...", options: ["Membuat pabrik raksasa", "Meningkatkan kesejahteraan rakyat", "Menaikkan pajak", "Menambah hutang luar negeri"], ans: 1 },
+      { q: "8. Alat timbang keberhasilan pembangunan manusia secara internasional adalah...", options: ["Rasio Gini", "PDB", "Indeks Pembangunan Manusia (IPM)", "Kurva Lorenz"], ans: 2 },
+      { q: "9. Angka Harapan Hidup (AHH) adalah indikator IPM untuk dimensi...", options: ["Kesehatan", "Pendidikan", "Daya Beli", "Ketenagakerjaan"], ans: 0 },
+      { q: "10. Rata-rata Lama Sekolah (RLS) mengukur dimensi...", options: ["Ekonomi", "Kesehatan", "Pendidikan", "Pemerataan"], ans: 2 },
+      { q: "11. Standar hidup layak dalam IPM dihitung berdasarkan...", options: ["Jumlah mobil", "Pengeluaran riil per kapita", "Gaji pejabat", "Tabungan nasional"], ans: 1 },
+      { q: "12. Kategori skor IPM Sangat Tinggi berada pada angka...", options: ["< 60", "60 - 70", "70 - 79", ">= 80"], ans: 3 },
+      { q: "13. Daerah dengan IPM < 60 dikategorikan sebagai...", options: ["Sangat Tinggi", "Tinggi", "Sedang", "Rendah"], ans: 3 },
+      { q: "14. Masalah utama jika pertumbuhan tinggi tapi IPM rendah adalah...", options: ["Negara gagal memperbaiki nasib warganya", "Inflasi turun", "Uang negara habis", "Ekspor menurun"], ans: 0 },
+      { q: "15. Kurva untuk mengukur ketimpangan pembagian pendapatan adalah...", options: ["Kurva Phillips", "Kurva Lorenz", "Kurva Permintaan", "Kurva Penawaran"], ans: 1 },
+      { q: "16. Rasio Gini bernilai 0 berarti...", options: ["Ketimpangan parah", "Pemerataan sempurna (keadilan mutlak)", "Pertumbuhan nol", "Inflasi tinggi"], ans: 1 },
+      { q: "17. Rasio Gini bernilai 1 berarti...", options: ["Pemerataan sempurna", "Ketimpangan mutlak (dikuasai 1 orang)", "Semua kaya raya", "Negara bangkrut"], ans: 1 },
+      { q: "18. Angka Rasio Gini yang sehat (wajar) biasanya berada di bawah...", options: ["0,8", "0,9", "0,4", "1,5"], ans: 2 },
+      { q: "19. Kebijakan publik untuk mengatasi ketimpangan salah satunya adalah...", options: ["Pajak regresif", "Pajak progresif orang kaya", "Menghapus subsidi", "Menaikkan harga beras"], ans: 1 },
+      { q: "20. E-commerce membantu perekonomian daerah pelosok dengan cara...", options: ["Menutup pasar tradisional", "Memutus rantai tengkulak & buka akses pasar", "Membuat barang makin mahal", "Mengurangi produksi"], ans: 1 },
+      { q: "21. Sistem pembayaran digital (QRIS) berguna bagi UMKM untuk...", options: ["Menghindari pajak", "Menerima pembayaran nontunai mudah", "Mempersulit transaksi", "Menambah hutang"], ans: 1 },
+      { q: "22. Pembangunan puskesmas di desa terpencil berdampak langsung pada indikator...", options: ["Standar hidup", "Angka Harapan Hidup", "Rata-rata lama sekolah", "Inflasi"], ans: 1 },
+      { q: "23. Program wajib belajar 12 tahun akan mendongkrak skor IPM pada indikator...", options: ["Daya beli", "Kesehatan", "Harapan Lama Sekolah", "Gini Ratio"], ans: 2 },
+      { q: "24. Bantuan Modal Usaha dari pajak ditujukan untuk pilar pemerataan...", options: ["Ekonomi digital", "Kebijakan publik / Fiskal", "Perdagangan luar negeri", "Moneter"], ans: 1 },
+      { q: "25. Tokoh yang membuat indeks Rasio Gini adalah...", options: ["Adam Smith", "Corrado Gini", "Max Lorenz", "Keynes"], ans: 1 },
+      { q: "26. Fintech berperan memberantas praktik...", options: ["Pajak", "Rentenir (pinjol ilegal)", "Sekolah gratis", "Ekspor"], ans: 1 },
+      { q: "27. Jika PDB Riil 2025 = 100 T, PDB Riil 2026 = 105 T, laju pertumbuhannya adalah...", options: ["2%", "5%", "10%", "15%"], ans: 1 },
+      { q: "28. Pembangunan ekonomi PASTI disertai dengan...", options: ["Ketimpangan", "Pertumbuhan Ekonomi", "Inflasi tinggi", "Penurunan gizi"], ans: 1 },
+      { q: "29. Apakah Pertumbuhan Ekonomi selalu menjamin Pembangunan Ekonomi?", options: ["Ya", "Tidak, jika uang hanya dipegang orang kaya", "Pasti sejahtera", "Selalu sama"], ans: 1 },
+      { q: "30. 'Kue Ekonomi' merujuk pada konsep...", options: ["Inflasi", "Produk Domestik Bruto (PDB)", "Pajak Bumi Bangunan", "Saham"], ans: 1 },
+      { q: "31. Membandingkan tinggi badan anak adalah analogi untuk...", options: ["Pembangunan", "Pemerataan", "Pertumbuhan fisik", "Inflasi"], ans: 2 },
+      { q: "32. Semakin melengkung jauh Kurva Lorenz ke bawah, maka...", options: ["Makin merata", "Makin timpang/tidak adil", "Ekonomi stabil", "PDB hancur"], ans: 1 },
+      { q: "33. Nilai Pengeluaran Riil per Kapita menunjukkan...", options: ["Daya beli nyata masyarakat", "Utang negara", "Cadangan devisa", "Harga saham"], ans: 0 },
+      { q: "34. Program Bansos diambil dari pungutan...", options: ["Pajak Progresif", "Sumbangan sukarela", "Denda tilang", "Utang pinjol"], ans: 0 },
+      { q: "35. Kesimpulan akhir Bab 1: Ekonomi yang baik adalah ekonomi yang...", options: ["Tumbuh cepat mengabaikan lingkungan", "Tumbuh membesar dan dibagikan merata", "Tumbuh 0%", "Dikuasai konglomerat"], ans: 1 }
+    ];
+
+    const matchData = [
+      { id: "m1", text: "1. PDB Riil", ans: "C" },
+      { id: "m2", text: "2. Kurva Lorenz", ans: "B" },
+      { id: "m3", text: "3. Rasio Gini 0", ans: "A" },
+      { id: "m4", text: "4. Angka Harapan Hidup", ans: "E" },
+      { id: "m5", text: "5. Pajak Progresif", ans: "D" }
+    ];
+    const matchOptions = [
+      { val: "A", text: "A. Kondisi pemerataan sempurna tanpa ketimpangan" },
+      { val: "B", text: "B. Grafik melengkung pengukur ketimpangan pendapatan" },
+      { val: "C", text: "C. Alat timbang pertumbuhan fisik tanpa efek inflasi" },
+      { val: "D", text: "D. Solusi kebijakan menarik dana dari kalangan kaya" },
+      { val: "E", text: "E. Indikator IPM untuk dimensi kesehatan" }
+    ];
+
+    const essayData = [
+      "1. Jelaskan perbedaan mendasar antara Pertumbuhan Ekonomi dan Pembangunan Ekonomi!",
+      "2. Mengapa PDB Nominal tidak disarankan untuk mengukur kemajuan fisik negara?",
+      "3. Jelaskan 3 indikator utama pembentuk skor IPM!",
+      "4. Bagaimana teknologi E-Commerce membantu pemerataan ekonomi di pelosok?",
+      "5. Apa yang terjadi jika negara punya pertumbuhan 10% tapi Rasio Gini-nya 0.9?"
+    ];
+
+    window.onload = () => {
+      const mcqCont = document.getElementById("mcq-container");
+      let mcqHTML = "";
+      mcqData.forEach((item, index) => {
+        mcqHTML += `<div class="mcq-item">
+          <p>${item.q}</p>
+          <div class="mcq-options">
+            ${item.options.map((opt, i) => `<label><input type="radio" name="mcq${index}" value="${i}"> ${opt}</label>`).join('')}
+          </div>
+        </div>`;
+      });
+      mcqCont.innerHTML = mcqHTML;
+
+      const matchCont = document.getElementById("match-container");
+      let matchHTML = "";
+      matchData.forEach((item, index) => {
+        matchHTML += `<div class="match-item">
+          <strong>${item.text}</strong>
+          <select id="${item.id}">
+            <option value="">-- Pilih Jawaban --</option>
+            ${matchOptions.map(o => `<option value="${o.val}">${o.text}</option>`).join('')}
+          </select>
+        </div>`;
+      });
+      matchCont.innerHTML = matchHTML;
+
+      const essayCont = document.getElementById("essay-container");
+      let essayHTML = "";
+      essayData.forEach((q, index) => {
+        essayHTML += `<div class="essay-item">
+          <p>${q}</p>
+          <textarea id="essay${index}" placeholder="Ketik jawabanmu di sini..."></textarea>
+        </div>`;
+      });
+      essayCont.innerHTML = essayHTML;
+    };
+
+    const waNumber = "6285167431907";
+
+    function submitKuis() {
+      const nama = document.getElementById("studentName").value.trim();
+      const absen = document.getElementById("studentAbsen").value.trim();
+      
+      if(!nama || !absen) { alert("Mohon isi Nama dan Nomor Absen terlebih dahulu!"); return; }
+
+      let skorObjektif = 0;
+      
+      mcqData.forEach((item, i) => {
+        const selected = document.querySelector(`input[name="mcq${i}"]:checked`);
+        if(selected && parseInt(selected.value) === item.ans) skorObjektif++;
+      });
+
+      matchData.forEach((item) => {
+        const val = document.getElementById(item.id).value;
+        if(val === item.ans) skorObjektif++;
+      });
+
+      const nilaiAkhir = (skorObjektif / 40) * 100;
+
+      let esaiTeks = "";
+      for(let i=0; i<5; i++) {
+        let ans = document.getElementById(`essay${i}`).value.trim() || "Tidak dijawab";
+        esaiTeks += `${i+1}. ${ans}\n`;
+      }
+
+      // Format teks menggunakan baris baru \n dan dienkripsi agar aman dikirim ke WhatsApp Web
+      let msgRaw = `*LAPORAN KUIS EKONOMI XII-IPS (BAB 1)*\n\n`;
+      msgRaw += `👤 *Nama:* ${nama}\n`;
+      msgRaw += `🔢 *Absen:* ${absen}\n`;
+      msgRaw += `📈 *Skor Objektif:* ${Math.round(nilaiAkhir)} / 100\n`;
+      msgRaw += `_(Benar ${skorObjektif} dari 40 soal)_\n\n`;
+      msgRaw += `📝 *Jawaban Esai:*\n${esaiTeks}\n`;
+      msgRaw += `Mohon dikoreksi untuk bagian esai, Pak/Bu. Terima kasih!`;
+
+      const encodedMsg = encodeURIComponent(msgRaw);
+      // MENGGUNAKAN API UTAMA WHATSAPP AGAR TIDAK TERJADI BUG LOADING PADA VERSI WEB DEKTOP
+      window.open(`https://api.whatsapp.com/send?phone=${waNumber}&text=${encodedMsg}`, "_blank");
+    }
+
+    function kirimRefleksi() {
+      const nama = document.getElementById("refleksiName").value.trim();
+      const text = document.getElementById("refleksiText").value.trim();
+      
+      if(!nama || !text) { alert("Isi nama dan catatan refleksi terlebih dahulu!"); return; }
+
+      let msgRaw = `*JURNAL REFLEKSI EKONOMI BAB 1*\n\n`;
+      msgRaw += `👤 *Nama:* ${nama}\n`;
+      msgRaw += `💡 *Refleksi:*\n"${text}"\n`;
+      
+      const encodedMsg = encodeURIComponent(msgRaw);
+      // MENGGUNAKAN API UTAMA WHATSAPP AGAR TIDAK TERJADI BUG LOADING PADA VERSI WEB DEKTOP
+      window.open(`https://api.whatsapp.com/send?phone=${waNumber}&text=${encodedMsg}`, "_blank");
+    }
+  </script>
+</body>
+</html>
