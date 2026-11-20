@@ -1,1 +1,514 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pembelajaran Mendalam - Ekonomi Internasional</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
+  <style>
+    :root {
+      --bg-color: #f4f9fc;
+      --text-color: #2b3a4a;
+      --c-cyan: #00BCD4;
+      --c-purple: #8B008B;
+      --c-blue: #0000FF;
+      --c-lime: #00FF00;
+      --c-yellow: #FFFF00;
+      --c-orange: #FFA500;
+      --c-red: #FF0000;
+      --c-darkgreen: #008000;
+      --card-bg: #ffffff;
+      --card-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Poppins', sans-serif; background-color: var(--bg-color); color: var(--text-color); overflow-x: hidden; scroll-behavior: smooth; }
+
+    header { background: linear-gradient(135deg, #2b84d4, #1964bc); padding: 40px 20px; text-align: center; border-bottom: 6px solid #00FF00; box-shadow: 0 5px 20px rgba(0,0,0,0.15); }
+    header h1 { font-weight: 900; font-size: 1.9rem; margin-bottom: 12px; text-transform: uppercase; }
+    header h2 { font-size: 1.4rem; font-weight: 800; margin-bottom: 15px; }
+    header h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 10px; }
+    header h4 { font-size: 1.05rem; font-weight: 600; margin-bottom: 25px; }
+    header .school-name { font-size: 1.8rem; font-weight: 900; margin-bottom: 8px; letter-spacing: 1.5px; }
+    header .teacher-name { font-size: 1.3rem; font-weight: 800; }
+
+    @keyframes pulse-icon { 0% { transform: scale(1); } 50% { transform: scale(1.15); } 100% { transform: scale(1); } }
+    @keyframes float-icon { 0% { transform: translateY(0px); } 50% { transform: translateY(-8px); } 100% { transform: translateY(0px); } }
+    @keyframes wiggle-icon { 0%, 100% { transform: rotate(0deg); } 25% { transform: rotate(-15deg); } 75% { transform: rotate(15deg); } }
+    @keyframes spin360Pause { 0% { transform: perspective(600px) rotateY(0deg); } 33.33% { transform: perspective(600px) rotateY(360deg); } 50% { transform: perspective(600px) rotateY(360deg); } 83.33% { transform: perspective(600px) rotateY(0deg); } 100% { transform: perspective(600px) rotateY(0deg); } }
+    
+    .anim-pulse { animation: pulse-icon 1.5s ease-in-out infinite; }
+    .anim-float { animation: float-icon 2.5s ease-in-out infinite; }
+    .anim-wiggle { animation: wiggle-icon 2s ease-in-out infinite; }
+
+    .nav-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; padding: 25px 20px; position: sticky; top: 0; background: rgba(244, 249, 252, 0.98); z-index: 100; backdrop-filter: blur(5px); box-shadow: 0 4px 15px rgba(0,0,0,0.03); }
+    .nav-btn { padding: 12px 25px; border: none; border-radius: 50px; font-weight: 800; font-size: 0.95rem; color: white; cursor: pointer; display: flex; align-items: center; gap: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: box-shadow 0.3s ease; }
+    .nav-btn:hover { animation: spin360Pause 12s ease-in-out infinite; box-shadow: 0 8px 20px rgba(0,0,0,0.2); }
+    .nav-btn i { font-size: 1.2rem; }
+    
+    .btn-cyan { background-color: var(--c-cyan); color: #000; box-shadow: 0 0 10px rgba(0,188,212,0.5); border: 2px solid white; }
+    .btn-purple { background-color: var(--c-purple); }
+    .btn-blue { background-color: var(--c-blue); border: 2px solid white; box-shadow: 0 0 10px rgba(0,0,255,0.4); }
+    .btn-lime { background-color: var(--c-lime); color: #000; }
+    .btn-yellow { background-color: var(--c-yellow); color: #000; }
+    .btn-orange { background-color: var(--c-orange); color: #000; }
+    .btn-red { background-color: var(--c-red); }
+
+    .section-container { max-width: 950px; margin: 30px auto; padding: 0 20px; display: none; animation: fadeIn 0.4s ease-in; scroll-margin-top: 100px; }
+    .section-container.active { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+
+    .card { background: var(--card-bg); border-radius: 20px; padding: 35px; margin-bottom: 25px; box-shadow: var(--card-shadow); border-top: 6px solid var(--c-blue); }
+    .card-title { display: flex; align-items: center; gap: 15px; margin-bottom: 25px; font-size: 1.8rem; font-weight: 800; color: var(--c-blue); }
+    .infographic { background: #fafafa; border-left: 6px solid var(--c-orange); padding: 25px; border-radius: 12px; margin: 25px 0; font-weight: 500; font-size: 1.05rem; line-height: 1.7; box-shadow: 0 4px 10px rgba(0,0,0,0.03); }
+    .styled-table { width: 100%; border-collapse: separate; border-spacing: 0; margin: 25px 0; font-size: 1rem; border-radius: 12px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+    .styled-table thead tr { background-color: var(--c-blue); color: white; text-align: left; }
+    .styled-table th, .styled-table td { padding: 18px; border-bottom: 1px solid #f0f0f0; }
+    .styled-table tbody tr:hover { background-color: #f8fbff; }
+    .calc-box { background: #eef7ff; padding: 20px; border-radius: 12px; border: 2px dashed var(--c-blue); margin-top: 15px; font-family: monospace; font-size: 1.15rem; color: #1a4a7b; font-weight: 600; }
+
+    .form-group { margin-bottom: 25px; }
+    .form-group label { display: block; font-weight: 700; margin-bottom: 10px; color: #334155; font-size: 1.05rem;}
+    .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 18px; border-radius: 12px; border: 2px solid #e2e8f0; font-family: 'Poppins', sans-serif; font-size: 1rem; transition: all 0.3s; background: #fdfdfd; }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--c-blue); outline: none; background: white; box-shadow: 0 0 0 4px rgba(0,0,255,0.1); }
+    
+    .quiz-question { margin-bottom: 30px; padding: 25px; background: #fff; border-radius: 15px; border-left: 5px solid var(--c-lime); box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
+    .quiz-question p { font-weight: 700; margin-bottom: 15px; font-size: 1.1rem; }
+    .quiz-options label { display: block; margin-bottom: 12px; cursor: pointer; padding: 15px; background: #f8fafc; border-radius: 10px; border: 1px solid #e2e8f0; transition: 0.2s; font-weight: 500; }
+    .quiz-options label:hover { background: #eff6ff; border-color: var(--c-blue); }
+    .match-row { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; padding: 20px; background: #fffdf5; border-radius: 12px; border-left: 5px solid var(--c-orange); box-shadow: 0 4px 10px rgba(0,0,0,0.03); }
+
+    .btn-submit { width: 100%; padding: 20px; border: none; border-radius: 15px; background: linear-gradient(90deg, var(--c-darkgreen), #00b300); color: white; font-size: 1.25rem; font-weight: 800; cursor: pointer; transition: 0.3s; margin-top: 25px; box-shadow: 0 8px 20px rgba(0,128,0,0.25); }
+    .btn-submit:hover:not(:disabled) { transform: translateY(-3px); filter: brightness(1.1); box-shadow: 0 12px 25px rgba(0,128,0,0.35); }
+    .btn-submit:disabled { background: #94a3b8; cursor: not-allowed; box-shadow: none; transform: none; filter: grayscale(1); } 
+
+    .leaderboard-table { width: 100%; border-collapse: collapse; margin-top: 25px; font-size: 1.05rem; }
+    .leaderboard-table th { background: var(--c-orange); color: white; padding: 15px; border-radius: 8px 8px 0 0; }
+    .leaderboard-table td { padding: 15px; border-bottom: 2px solid #eee; text-align: center; font-weight: 600; }
+    .leaderboard-table tr:nth-child(even) { background: #fffaf0; }
+    .leaderboard-table tr:hover { background: #ffedd5; }
+    .rank-1 { color: #d4af37; font-size: 1.5rem; } 
+    .rank-2 { color: #c0c0c0; font-size: 1.5rem; } 
+    .rank-3 { color: #cd7f32; font-size: 1.5rem; } 
+
+    .content-p { font-size: 1.05rem; line-height: 1.8; color: #475569; margin-bottom: 15px; }
+
+    @media (max-width: 768px) { .nav-btn { flex: 1 1 45%; justify-content: center; font-size: 0.85rem; padding: 12px; } header h1 { font-size: 1.4rem !important; } header h2 { font-size: 1.1rem !important; } }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header style="background: linear-gradient(135deg, #2b84d4, #1964bc); padding: 40px 20px; text-align: center; border-bottom: 6px solid #00FF00; box-shadow: 0 5px 20px rgba(0,0,0,0.15);">
+    <h1 style="color: #FFFF00 !important; font-weight: 900; font-size: 1.9rem; margin-bottom: 12px; text-transform: uppercase; margin-top:0; text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000, 2px 2px 4px rgba(0,0,0,0.5);">BAB 2 : EKONOMI INTERNASIONAL</h1>
+    <h2 style="color: #FFA500 !important; font-weight: 800; font-size: 1.4rem; margin-bottom: 15px; margin-top:0; text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000, 2px 2px 4px rgba(0,0,0,0.5);">TUJUAN PEMBELAJARAN (TP 1) : Teori dan Paradigma Perdagangan Internasional</h2>
+    <h3 style="color: #00FF00 !important; font-weight: 700; font-size: 1.15rem; margin-bottom: 10px; margin-top:0; text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000, 2px 2px 4px rgba(0,0,0,0.5);">Mata Pelajaran : Ekonomi (Kelas 12 IPS)</h3>
+    <h4 style="color: #8B008B !important; font-weight: 600; font-size: 1.05rem; margin-bottom: 25px; margin-top:0; text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff, 2px 2px 4px rgba(0,0,0,0.5);">Jumat, 6 November 2026</h4>
+    <div class="school-name" style="color: #FF0000 !important; font-weight: 900; font-size: 1.8rem; margin-bottom: 8px; letter-spacing: 1.5px; text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff, 2px 2px 4px rgba(0,0,0,0.5);">SMA ADVENT BATAM</div>
+    <div class="teacher-name" style="color: #008000 !important; font-weight: 800; font-size: 1.3rem; text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff, 2px 2px 4px rgba(0,0,0,0.5);">Guru : Ir. Budhy Prasetyo</div>
+  </header>
+
+  <!-- NAVIGATION -->
+  <nav class="nav-container">
+    <button class="nav-btn btn-cyan" onclick="showSection('sec-datasiswa')"><i class="fa-solid fa-address-card anim-float"></i> Data Siswa</button>
+    <button class="nav-btn btn-purple" onclick="showSection('sec-pemantik')"><i class="fa-solid fa-fire-flame-curved anim-pulse" style="color:var(--c-yellow);"></i> Pemantik</button>
+    <button class="nav-btn btn-blue" onclick="showSection('sec-teori-mutlak')"><i class="fa-solid fa-book-open anim-float" style="color:white;"></i> Teori Dasar</button>
+    <button class="nav-btn btn-lime" onclick="showSection('sec-teori-komparatif')"><i class="fa-solid fa-scale-balanced anim-wiggle" style="color:var(--c-darkgreen);"></i> Keunggulan Komparatif</button>
+    <button class="nav-btn btn-yellow" onclick="showSection('sec-lkpd')"><i class="fa-solid fa-laptop-code anim-pulse" style="color:var(--c-blue);"></i> LKPD Interaktif</button>
+    <button class="nav-btn btn-orange" onclick="showKuisDanFetchLeaderboard()"><i class="fa-solid fa-list-check anim-float" style="color:var(--c-purple);"></i> Kuis & Rekap</button>
+    <button class="nav-btn btn-red" onclick="showSection('sec-refleksi')"><i class="fa-solid fa-lightbulb anim-pulse" style="color:var(--c-yellow);"></i> Refleksi</button>
+  </nav>
+
+  <!-- SECTION 0: DATA SISWA -->
+  <section id="sec-datasiswa" class="section-container active">
+    <div class="card" style="border-top-color: var(--c-cyan);">
+      <div class="card-title" style="color: #008394;"><i class="fa-solid fa-user-graduate anim-pulse"></i> Registrasi Siswa (Wajib)</div>
+      <div class="infographic" style="background:#e0f7fa; border-left-color:var(--c-cyan); color:#006064;">
+        <i class="fa-solid fa-circle-exclamation anim-pulse" style="color:#d32f2f;"></i> Harap isi <strong>Nama Lengkap</strong> dan <strong>Kelas</strong> Anda dengan benar sebelum memulai pembelajaran dan kuis.
+      </div>
+      <div class="form-group">
+        <label style="color: #008394;"><i class="fa-solid fa-signature"></i> Nama Lengkap Siswa:</label>
+        <input type="text" id="globalNama" placeholder="Ketik nama lengkap Anda di sini..." style="border-color: #00BCD4;">
+      </div>
+      <div class="form-group">
+        <label style="color: #008394;"><i class="fa-solid fa-school"></i> Kelas:</label>
+        <input type="text" id="globalKelas" placeholder="Contoh: XII IPS 1" style="border-color: #00BCD4;">
+      </div>
+      <button class="btn-submit" style="background: linear-gradient(90deg, #0097A7, #00BCD4);" onclick="simpanDataSiswa()"><i class="fa-solid fa-floppy-disk anim-float"></i> Simpan Data & Lanjut ke Materi</button>
+      <div id="notifSimpanData" style="display:none; margin-top:20px; text-align:center; color:var(--c-darkgreen); font-weight:800; font-size:1.1rem;">
+        <i class="fa-solid fa-check-circle anim-pulse"></i> Data Tersimpan! Silakan pilih menu di atas.
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 1: PEMANTIK FULL -->
+  <section id="sec-pemantik" class="section-container">
+    <div class="card" style="border-top-color: var(--c-purple);">
+      <div class="card-title" style="color: var(--c-purple);"><i class="fa-solid fa-brain anim-pulse"></i> Refleksi Pemantik (Mindful Learning)</div>
+      <p class="content-p">Berdasarkan pendekatan <strong>Kurikulum Pembelajaran Mendalam (Deep Learning)</strong>, peserta didik tidak hanya menghafal teori, tetapi diajak untuk mengontekstualisasikan teori ekonomi dengan kondisi riil yang terjadi di lapangan. Mari kita mulai dengan sebuah pertanyaan pemantik:</p>
+      
+      <div class="infographic" style="border-left: 6px solid var(--c-purple); background: #fdf5ff; font-size: 1.25rem; font-weight: 700; color: #6a006a;">
+        "Mengapa Indonesia, yang secara geografis memiliki daratan sangat luas, tanah vulkanis yang subur, dan iklim tropis yang ideal, pada kenyataannya masih harus mengimpor beras dari Thailand, atau bawang putih dari Tiongkok, yang memiliki karakteristik geografis berbeda?"
+      </div>
+      
+      <p class="content-p">Analisis mendalam terhadap pertanyaan ini akan mengarahkan siswa pada penemuan fakta empiris bahwa keunggulan dalam perdagangan internasional tidak semata-mata ditentukan oleh faktor bawaan alam (statis). Keunggulan komparatif dapat bergeser dan diciptakan secara dinamis melalui beberapa faktor kunci:</p>
+      <ul style="margin-left: 20px; line-height: 1.8; color: #475569; margin-bottom: 15px; font-size: 1.05rem;">
+        <li><strong>Inovasi Teknologi Pertanian:</strong> Penggunaan bibit unggul, mekanisasi panen, dan rekayasa genetika.</li>
+        <li><strong>Efisiensi Rantai Pasok (Supply Chain):</strong> Biaya logistik dan infrastruktur transportasi antar daerah.</li>
+        <li><strong>Intervensi Kebijakan Negara (Subsidi):</strong> Adanya dukungan finansial dari negara asal untuk menekan biaya produksi petani lokal mereka.</li>
+      </ul>
+      <p class="content-p">Dengan memahami ini, siswa diharapkan memiliki *Critical Thinking* yang komprehensif sebelum memasuki teori klasik Adam Smith dan David Ricardo.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 2: TEORI DASAR FULL -->
+  <section id="sec-teori-mutlak" class="section-container">
+    <div class="card" style="border-top-color: var(--c-blue);">
+      <div class="card-title" style="color: var(--c-blue);"><i class="fa-solid fa-ship anim-float"></i> Faktor & Teori Keunggulan Mutlak</div>
+      
+      <p class="content-p">Perdagangan internasional lahir dari kenyataan empiris bahwa tidak ada satu pun negara di dunia yang mampu memenuhi seluruh kebutuhan warganya secara mandiri (autarki) akibat perbedaan ketersediaan sumber daya alam, iklim, kemajuan teknologi, dan kapasitas sumber daya manusia (SDM).</p>
+      
+      <div class="infographic" style="border-left-color: var(--c-orange);">
+        <h3 style="color: var(--c-orange); margin-bottom:15px; font-weight: 800;"><i class="fa-solid fa-bolt anim-pulse" style="color:var(--c-orange);"></i> 3 Faktor Utama Pendorong Perdagangan Internasional:</h3>
+        <ol style="margin-left: 20px; line-height: 2;">
+          <li>Perbedaan spesifikasi dan ketersediaan faktor produksi (Bahan baku alam, modal, dan tenaga kerja).</li>
+          <li>Perbedaan tingkat penguasaan teknologi yang pada akhirnya menciptakan efisiensi biaya (Skala Ekonomis).</li>
+          <li>Kebutuhan mendesak untuk memperluas batas kemungkinan konsumsi warganya, melampaui kurva kapasitas batas produksi domestiknya.</li>
+        </ol>
+      </div>
+
+      <h3 style="margin-top:35px; color: var(--c-blue); font-size: 1.4rem;"><i class="fa-solid fa-medal anim-wiggle" style="color:var(--c-yellow);"></i> Teori Keunggulan Mutlak (Absolute Advantage) – Adam Smith</h3>
+      <p class="content-p">Bapak ilmu ekonomi modern, Adam Smith, melalui bukunya *The Wealth of Nations* mengemukakan bahwa: <strong>Sebuah negara dikatakan memiliki keunggulan mutlak jika negara tersebut mampu memproduksi suatu barang dengan jumlah yang secara fisik lebih banyak, atau dengan biaya tenaga kerja yang secara absolut lebih murah dibandingkan negara lain, dengan menggunakan jumlah input sumber daya yang sama persis.</strong></p>
+      
+      <table class="styled-table">
+        <thead>
+          <tr>
+            <th>Negara</th>
+            <th>Produksi Kain (Meter/Hari Kerja)</th>
+            <th>Produksi Gandum (Kg/Hari Kerja)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Negara A</strong></td><td>100</td><td>50</td></tr>
+          <tr><td><strong>Negara B</strong></td><td>50</td><td>100</td></tr>
+        </tbody>
+      </table>
+
+      <div class="infographic" style="background: #eff6ff; border-left-color: var(--c-blue);">
+        <strong style="color:var(--c-blue); font-size: 1.1rem;"><i class="fa-solid fa-magnifying-glass-chart anim-pulse"></i> Analisis Meaningful Learning:</strong><br><br>
+        Berdasarkan data hipotetis di atas, Negara A memiliki keunggulan mutlak secara absolut pada produksi kain (mampu mencetak 100 > 50). Sebaliknya, Negara B memiliki keunggulan mutlak pada produksi gandum (mampu mencetak 100 > 50). <br><br>
+        <strong>Kesimpulan Spesialisasi:</strong> Menurut Adam Smith, efisiensi dunia akan maksimal jika Negara A menghentikan total produksi gandumnya dan memfokuskan (spesialisasi penuh) seluruh sumber dayanya hanya untuk memproduksi kain. Demikian juga sebaliknya untuk Negara B. Setelah berspesialisasi, mereka melakukan barter, sehingga kedua belah pihak akan menikmati total kombinasi barang yang jauh lebih banyak dibandingkan memaksakan diri memproduksi keduanya secara terpisah (Autarki).
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3: TEORI KOMPARATIF FULL -->
+  <section id="sec-teori-komparatif" class="section-container">
+    <div class="card" style="border-top-color: var(--c-lime);">
+      <div class="card-title" style="color: var(--c-darkgreen);"><i class="fa-solid fa-scale-unbalanced anim-wiggle"></i> Teori Keunggulan Komparatif</div>
+      
+      <h3 style="color: var(--c-darkgreen); font-size: 1.4rem;"><i class="fa-solid fa-user-tie anim-float" style="color:var(--c-orange);"></i> Teori David Ricardo</h3>
+      <p class="content-p">Kelemahan fatal dari teori Adam Smith muncul ketika ditemukan sebuah kasus: <strong>Bagaimana jika satu negara sangat maju dan efisien, sehingga ia memiliki keunggulan mutlak di *semua* jenis barang dibandingkan negara rekannya?</strong> Apakah perdagangan masih bisa terjadi dan menguntungkan keduanya?</p>
+      
+      <p class="content-p">Ekonom David Ricardo memecahkan anomali ini melalui konsep <strong style="color:var(--c-darkgreen);">biaya peluang (Opportunity Cost)</strong>. Ia menyatakan bahwa: <em>Suatu negara akan tetap memperoleh keuntungan dari perdagangan internasional (Mutually Beneficial Trade) jika mereka melakukan spesialisasi pada barang yang memiliki pengorbanan relatif (biaya peluang) paling kecil dibandingkan negara lain, meskipun secara mutlak ia kalah dalam segala hal.</em></p>
+      
+      <table class="styled-table" style="border-top: 4px solid var(--c-lime);">
+        <thead style="background: var(--c-darkgreen);">
+          <tr>
+            <th>Negara</th>
+            <th>Produksi Mobil (Unit/Hari)</th>
+            <th>Produksi Motor (Unit/Hari)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Negara X (Maju)</strong></td><td>20</td><td>40</td></tr>
+          <tr><td><strong>Negara Y (Berkembang)</strong></td><td>10</td><td>10</td></tr>
+        </tbody>
+      </table>
+      <p class="content-p">Pada data di atas, Negara X memiliki keunggulan mutlak pada kedua barang (20 Mobil > 10 Mobil, dan 40 Motor > 10 Motor). Secara kasat mata, Negara X tidak butuh Negara Y. Namun, mari kita hitung Dasar Tukar Dalam Negeri (DTDN) atau rasio Biaya Peluangnya:</p>
+
+      <div class="calc-box">
+        <strong><i class="fa-solid fa-calculator"></i> Analisis Pengorbanan (Biaya Peluang) Negara X:</strong><br><br>
+        Untuk memproduksi 1 Mobil, Negara X harus mengorbankan waktu yang bisa dipakai membuat = 40/20 = <strong>2 unit Motor</strong><br>
+        Untuk memproduksi 1 Motor, Negara X mengorbankan = 20/40 = <strong>0,5 unit Mobil</strong>
+      </div>
+      <div class="calc-box">
+        <strong><i class="fa-solid fa-calculator"></i> Analisis Pengorbanan (Biaya Peluang) Negara Y:</strong><br><br>
+        Untuk memproduksi 1 Mobil, Negara Y mengorbankan = 10/10 = <strong>1 unit Motor</strong><br>
+        Untuk memproduksi 1 Motor, Negara Y mengorbankan = 10/10 = <strong>1 unit Mobil</strong>
+      </div>
+
+      <div class="infographic" style="border-left-color: var(--c-lime); background: #f0fdf4;">
+        <strong style="color:var(--c-darkgreen); font-size: 1.1rem;"><i class="fa-solid fa-check-double anim-pulse"></i> Kesimpulan Spesialisasi Ricardo:</strong>
+        <ul style="margin-left: 25px; margin-top: 15px; line-height: 1.8;">
+          <li>Pada produksi <strong>Motor</strong>: Pengorbanan Negara X (0,5 Mobil) lebih kecil dari pengorbanan Negara Y (1 Mobil). Maka, <strong>Negara X memiliki Keunggulan Komparatif pada Motor</strong>.</li>
+          <li>Pada produksi <strong>Mobil</strong>: Pengorbanan Negara Y (1 Motor) lebih kecil dari pengorbanan Negara X (2 Motor). Maka, meskipun secara fisik jumlah produksinya lebih sedikit, <strong>Negara Y memiliki Keunggulan Komparatif pada Mobil</strong>.</li>
+          <li>Perdagangan yang saling menguntungkan (Win-Win Solution) akan terjadi jika Negara X fokus mengekspor Motor, dan Negara Y fokus mengekspor Mobil.</li>
+        </ul>
+      </div>
+
+      <!-- Simulasi Video -->
+      <h3 style="margin-top: 35px; color: var(--c-darkgreen); font-size: 1.4rem;"><i class="fa-brands fa-youtube anim-pulse" style="color: var(--c-red);"></i> Simulasi Video Pembelajaran Visual</h3>
+      <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 18px; margin-top: 20px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+        <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/L1W0mS6z2wE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4: LKPD INTERAKTIF -->
+  <section id="sec-lkpd" class="section-container">
+    <div class="card" style="border-top-color: var(--c-yellow);">
+      <div class="card-title" style="color: #bfa700;"><i class="fa-solid fa-users-gear anim-spin" style="animation: spin 4s linear infinite;"></i> LKPD Interaktif (Analisis Kritis)</div>
+      <p style="margin-bottom: 25px; font-weight: 600; color: #475569; font-size: 1.05rem;">Kerjakan 5 soal analisis di bawah ini. Total poin maksimal untuk sesi LKPD ini adalah 20 Poin (Masing-masing bernilai 4 Poin).</p>
+      
+      <div class="form-group"><label><i class="fa-solid fa-pen-nib" style="color:var(--c-blue);"></i> 1. Berdasarkan teori komparatif, mengapa Indonesia secara rasional harus mengkhususkan diri (spesialisasi) pada barang yang biaya peluangnya paling rendah di tingkat global?</label><textarea id="lkpd1" rows="3"></textarea></div>
+      <div class="form-group"><label><i class="fa-solid fa-pen-nib" style="color:var(--c-blue);"></i> 2. Dinamika Pasar: Faktor-faktor krusial apa saja yang dapat menyebabkan suatu negara mendadak kehilangan keunggulan komparatifnya atas suatu produk di masa depan?</label><textarea id="lkpd2" rows="3"></textarea></div>
+      <div class="form-group"><label><i class="fa-solid fa-pen-nib" style="color:var(--c-blue);"></i> 3. Studi Kasus Impor: Jelaskan alasan rasional secara matematis dan ekonomis, mengapa negara maju (seperti AS) masih harus mengimpor tekstil dari negara berkembang (seperti Bangladesh)?</label><textarea id="lkpd3" rows="3"></textarea></div>
+      <div class="form-group"><label><i class="fa-solid fa-pen-nib" style="color:var(--c-blue);"></i> 4. Evaluasi Kebijakan Autarki: Apa dampak destruktif terburuk bagi struktur harga dan kesejahteraan penduduk jika sebuah negara memaksakan diri menjadi mandiri total (autarki)?</label><textarea id="lkpd4" rows="3"></textarea></div>
+      <div class="form-group"><label><i class="fa-solid fa-pen-nib" style="color:var(--c-blue);"></i> 5. Strategi Nasional: Mengacu pada kondisi riil SDM dan SDA, produk atau jasa spesifik apa yang menurut analisis Anda paling layak dijadikan fokus utama ekspor oleh Indonesia dekade ini?</label><textarea id="lkpd5" rows="3"></textarea></div>
+      
+      <div class="infographic" style="background:#fefce8; border-left-color: var(--c-yellow); color:#a16207;">
+        <strong><i class="fa-solid fa-circle-info anim-pulse"></i> Info Penilaian Terpadu:</strong> Seluruh jawaban argumentatif LKPD di atas akan dievaluasi oleh sistem pengajar dan diakumulasikan ke dalam <strong>Nilai LKPD (Maks 20 Poin)</strong> secara langsung ke Server.
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5: KUIS & REKAP -->
+  <section id="sec-kuis" class="section-container">
+    <div class="card" style="border-top-color: var(--c-orange);">
+      <div class="card-title" style="color: var(--c-orange);"><i class="fa-solid fa-ranking-star anim-pulse"></i> Evaluasi Akhir & Papan Klasemen</div>
+      
+      <div class="form-group" style="background:#f1f5f9; padding: 15px; border-radius: 10px; border-left: 5px solid var(--c-cyan);">
+        <strong style="color:#334155;"><i class="fa-solid fa-user-check" style="color:var(--c-cyan);"></i> Anda login sebagai:</strong>
+        <div id="tampilanSiswaAktif" style="font-size: 1.2rem; font-weight: 800; color: var(--c-blue); margin-top:5px;">(Belum Mengisi Data di Menu "Data Siswa")</div>
+      </div>
+
+      <h3 style="color: var(--c-blue); margin: 30px 0 15px;"><i class="fa-solid fa-list-ul"></i> A. Pilihan Ganda (Maks: 50)</h3>
+      <div id="pg-container"></div> 
+
+      <h3 style="color: var(--c-purple); margin: 30px 0 10px;"><i class="fa-solid fa-code-merge"></i> B. Menjodohkan (Maks: 10)</h3>
+      <p style="font-size:0.95rem; color:#64748b; margin-bottom:20px;">Pilih pasangan definisi yang paling tepat.</p>
+      <div id="match-container"></div> 
+
+      <h3 style="color: var(--c-darkgreen); margin: 30px 0 15px;"><i class="fa-solid fa-file-pen"></i> C. Soal Esai (Maks: 20)</h3>
+      <div class="form-group"><label>1. Tuliskan argumen Anda, mengapa David Ricardo membantah teori efisiensi tunggal Adam Smith!</label><textarea id="esai1" rows="3"></textarea></div>
+      <div class="form-group"><label>2. Berikan contoh riil mengenai pergeseran keunggulan komparatif akibat teknologi!</label><textarea id="esai2" rows="3"></textarea></div>
+
+      <div id="notifTerekam" style="display:none; text-align:center; padding: 15px; background: #ecfccb; color: #3f6212; border-radius: 10px; margin-bottom:15px; border: 2px solid #84cc16; font-weight:700; font-size: 1.1rem;">
+         <i class="fa-solid fa-shield-check anim-pulse" style="font-size: 1.5rem;"></i> Jawaban Anda SUDAH TEREKAM di server sekolah!<br>
+         <span style="font-size: 0.95rem; font-weight: 500;">(Anda tidak perlu menekan tombol kirim ulang)</span>
+      </div>
+
+      <button id="btnKirimKuis" class="btn-submit" onclick="hitungKuis()"><i class="fa-solid fa-cloud-arrow-up anim-float"></i> Kirim Jawaban Akhir & Buka Rekap Klasemen</button>
+      
+      <!-- HASIL SKOR PRIBADI -->
+      <div id="hasilKuis" style="display:none; margin-top:40px; padding:30px; background:#f8fafc; border:4px solid var(--c-blue); border-radius:20px;">
+        <div style="text-align:center; padding-bottom: 20px; border-bottom: 3px dashed #cbd5e1;">
+          <h2 style="color:var(--c-blue); font-size:2.8rem; font-weight:900;">SKOR ANDA: <span id="skorDisplay">0</span>/100</h2>
+          <div style="display:flex; justify-content:center; gap:10px; flex-wrap:wrap; font-weight:800; font-size:1rem; margin-top:15px;">
+            <span style="background:var(--c-yellow); color:#000; padding:8px 15px; border-radius:8px;">LKPD: <span id="sLkpd">0</span></span>
+            <span style="background:var(--c-blue); color:#fff; padding:8px 15px; border-radius:8px;">PG: <span id="sPg">0</span></span>
+            <span style="background:var(--c-purple); color:#fff; padding:8px 15px; border-radius:8px;">MATCH: <span id="sMatch">0</span></span>
+            <span style="background:var(--c-darkgreen); color:#fff; padding:8px 15px; border-radius:8px;">ESAI: <span id="sEsai">0</span></span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- LEADERBOARD KELAS -->
+      <div id="wadahLeaderboard" style="display:none; margin-top: 40px; padding-top:20px; border-top: 2px dashed #cbd5e1;">
+        <h3 style="text-align:center; color:var(--c-orange); font-size: 1.6rem;"><i class="fa-solid fa-trophy anim-pulse" style="color:#d4af37;"></i> LEADERBOARD KELAS SEMENTARA</h3>
+        <p style="text-align:center; font-size: 0.95rem; color: #64748b; margin-bottom:15px;">Daftar klasemen murid (Top 10) dengan skor tertinggi yang telah dikonfirmasi server.</p>
+        <table class="leaderboard-table" id="leaderboardTabel">
+          <thead><tr><th>Peringkat</th><th>Nama Siswa</th><th>Kelas</th><th>Total Skor</th></tr></thead>
+          <tbody id="leaderboardBody">
+            <tr><td colspan="4" style="text-align:center; font-style:italic;">Memuat data klasemen dari server Google Sheet...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION REFLEKSI FULL -->
+  <section id="sec-refleksi" class="section-container">
+    <div class="card" style="border-top-color: var(--c-red);">
+      <div class="card-title" style="color: var(--c-red);"><i class="fa-solid fa-comments anim-float"></i> Jurnal Refleksi Pembelajaran Mendalam</div>
+      
+      <p class="content-p">Tahap terakhir dari kerangka Kurikulum Pembelajaran Mendalam (Deep Learning) mengharuskan terjadinya internalisasi makna secara dua arah (Siswa dan Guru). Evaluasi tidak berakhir pada angka kuis, melainkan pemaknaan nilai untuk kehidupan nyata.</p>
+      
+      <div class="infographic" style="border-left-color: var(--c-red); background:#fef2f2;">
+        <h3 style="color:#b91c1c; margin-bottom:15px; font-size:1.3rem;"><i class="fa-solid fa-user-graduate"></i> Refleksi Kognitif Siswa</h3>
+        <div class="form-group" style="margin-bottom:0;">
+          <label style="color:#7f1d1d;">Apa makna (Meaningful Learning) paling berharga yang kamu dapatkan dari simulasi materi Teori Perdagangan Internasional hari ini? Bagaimana kamu mengaitkannya dengan barang impor yang kamu pakai sehari-hari?</label>
+          <textarea rows="4" placeholder="Hari ini saya menyadari secara empiris bahwa..."></textarea>
+        </div>
+      </div>
+
+      <div class="infographic" style="border-left-color: var(--c-darkgreen); background:#f0fdf4;">
+        <h3 style="color:var(--c-darkgreen); margin-bottom:15px; font-size:1.3rem;"><i class="fa-solid fa-chalkboard-user"></i> Catatan Pedagogis Pengajar</h3>
+        <div class="form-group" style="margin-bottom:0;">
+          <label style="color:#14532d;">Evaluasi Guru (Ir. Budhy Prasetyo):</label>
+          <textarea rows="4" placeholder="Observasi keterlibatan, pemahaman konsep, dan hambatan kognitif siswa dalam kelas hari ini..."></textarea>
+        </div>
+      </div>
+      <button class="btn-submit" style="background:var(--c-red);"><i class="fa-solid fa-floppy-disk anim-pulse"></i> Simpan Catatan Jurnal Secara Permanen</button>
+    </div>
+  </section>
+
+  <script>
+    const URL_WEB_APP = "https://script.google.com/macros/s/AKfycbwoyTzs_EJJyM12lAgYPaGdA0FkKNTIC8lH_0xO-5aVFcxs9QjnctqY1T0PgYZzuqbdMA/exec"; 
+    
+    let namaSiswaGlobal = "";
+    let kelasSiswaGlobal = "";
+
+    function showSection(sectionId) {
+      document.querySelectorAll('.section-container').forEach(sec => sec.classList.remove('active'));
+      const activeSection = document.getElementById(sectionId);
+      activeSection.classList.add('active');
+      activeSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function simpanDataSiswa() {
+      const inputNama = document.getElementById('globalNama').value.trim();
+      const inputKelas = document.getElementById('globalKelas').value.trim();
+
+      if (!inputNama || !inputKelas) { alert("Mohon isi Nama Lengkap dan Kelas Anda terlebih dahulu!"); return; }
+      namaSiswaGlobal = inputNama;
+      kelasSiswaGlobal = inputKelas;
+      document.getElementById('notifSimpanData').style.display = 'block';
+      document.getElementById('tampilanSiswaAktif').innerText = `${namaSiswaGlobal} (${kelasSiswaGlobal})`;
+      
+      setTimeout(() => { showSection('sec-pemantik'); }, 1500);
+    }
+
+    function showKuisDanFetchLeaderboard() {
+      showSection('sec-kuis');
+      if (namaSiswaGlobal === "") {
+        document.getElementById('tampilanSiswaAktif').innerText = "⚠️ ANDA BELUM MENGISI DATA DIRI DI MENU 'DATA SISWA'!";
+        document.getElementById('tampilanSiswaAktif').style.color = "red";
+      }
+      document.getElementById('wadahLeaderboard').style.display = 'block';
+      fetchLeaderboardData(null); 
+    }
+
+    const pgData = [
+      { q: "1. Faktor pendorong perdagangan internasional, kecuali...", options: ["Perbedaan ketersediaan SDA", "Perbedaan teknologi", "Perluasan kemungkinan konsumsi", "Kesamaan sumber daya alam", "Perbedaan tenaga kerja"], ans: 3 },
+      { q: "2. Teori Keunggulan Mutlak dikemukakan oleh...", options: ["Adam Smith", "David Ricardo", "John Maynard Keynes", "Karl Marx", "Milton Friedman"], ans: 0 },
+      { q: "3. Teori Keunggulan Komparatif dikemukakan oleh...", options: ["Adam Smith", "David Ricardo", "Heckscher-Ohlin", "Malthus", "Rostow"], ans: 1 },
+      { q: "4. Sebuah negara dikatakan memiliki keunggulan mutlak jika...", options: ["Menghasilkan barang paling mahal", "Memiliki militer terkuat", "Memproduksi lebih banyak/murah dengan sumber daya sama", "Hanya bisa melakukan impor", "Menutup akses perdagangan (autarki)"], ans: 2 },
+      { q: "5. Konsep yang memecahkan kelemahan teori Adam Smith pada Teori David Ricardo adalah...", options: ["Tarif Impor", "Biaya Transportasi", "Subsidi", "Biaya Peluang (Opportunity Cost)", "Inflasi"], ans: 3 },
+      { q: "6. (Berdasarkan Tabel Analisis) Negara A memproduksi Kain: 100, Gandum: 50. Berapa biaya peluang absolut untuk memproduksi 1 unit Gandum di Negara A?", options: ["0,5 kain", "2 kain", "50 kain", "100 kain", "150 kain"], ans: 1 },
+      { q: "7. Alasan empiris mengapa tidak ada satupun negara modern di dunia yang mampu melakukan praktik autarki (mandiri total) secara berkelanjutan adalah karena...", options: ["Adanya ketimpangan geografis iklim, SDA, dan gap teknologi", "Semua negara sudah mencapai status negara kaya raya (developed)", "Adanya sanksi dan aturan ketat PBB yang melarang praktik autarki", "Adanya embargo dari WTO (World Trade Organization)", "Seluruh negara memiliki kualifikasi spesifikasi yang persis kembar"], ans: 0 },
+      { q: "8. Spesialisasi produksi ekstrem yang diamanatkan dalam Teori Keunggulan Mutlak secara praksis memiliki arti bahwa suatu entitas negara harus...", options: ["Memproduksi seluruh lini barang kebutuhannya secara independen", "Meninggalkan produksi lokal dan hanya mengandalkan barang jadi impor", "Melakukan fokus produksi skala penuh hanya pada spesifik barang di mana negara tersebut mendominasi dan memiliki efisiensi mutlak", "Memaksimalkan pencetakan uang kartal sebanyak-banyaknya untuk membeli produk asing", "Menutup akses tenaga kerja asing"], ans: 2 },
+      { q: "9. (Berdasarkan Studi Kasus Matriks) Negara X sanggup memproduksi Mobil: 20 unit/hari dan Motor: 40 unit/hari. Hitunglah Dasar Tukar Dalam Negeri (DTDN) biaya peluang untuk mencetak 1 unit Mobil!", options: ["0,5 Motor", "2 Motor", "20 Motor", "40 Motor", "60 Motor"], ans: 1 },
+      { q: "10. (Analisis Komparatif) Diketahui Negara Y memproduksi Mobil: 10 dan Motor: 10. Jika diproyeksikan dan disandingkan secara diametral dengan Negara X (Mobil 20, Motor 40), maka menurut Ricardo, Negara Y sah memiliki keunggulan komparatif pada lini...", options: ["Industri Mobil", "Industri Motor", "Mendominasi Mobil sekaligus Motor", "Tergolong negara gagal, tidak punya keunggulan apapun", "Hanya komoditas mentah seperti Kain"], ans: 0 }
+    ];
+
+    const matchData = [{ id: "m1", q: "1. Adam Smith", ans: "C" }, { id: "m2", q: "2. David Ricardo", ans: "E" }, { id: "m3", q: "3. Autarki", ans: "B" }];
+    const matchOptions = [{ val: "A", text: "A. Pengorbanan untuk memproduksi barang komplementer lainnya (Biaya Peluang)" }, { val: "B", text: "B. Postulat kondisi utopis di mana negara berhalusinasi mampu memenuhi seluruh rantai kebutuhannya secara mandiri" }, { val: "C", text: "C. Figur pemikir fundamental pencetus Teori Keunggulan Mutlak (Absolute Advantage)" }, { val: "D", text: "D. Metodologi memfokuskan sumber daya penuh untuk memproduksi barang berskala paling efisien" }, { val: "E", text: "E. Arsitek intelektual di balik gagasan rasional Teori Keunggulan Komparatif" }];
+
+    window.onload = () => {
+      let pgHTML = "";
+      pgData.forEach((item, index) => {
+        pgHTML += `<div class="quiz-question"><p>${item.q}</p><div class="quiz-options">${item.options.map((opt, i) => `<label><input type="radio" name="pg${index}" value="${i}"> <span style="margin-left:8px;">${opt}</span></label>`).join('')}</div></div>`;
+      });
+      document.getElementById("pg-container").innerHTML = pgHTML;
+
+      let matchHTML = "";
+      matchData.forEach((item) => {
+        matchHTML += `<div class="match-row"><strong style="color:#0f172a;"><i class="fa-solid fa-puzzle-piece" style="color:var(--c-orange); margin-right:8px;"></i> ${item.q}</strong><select id="${item.id}" class="form-group" style="margin-bottom:0;"><option value="">-- Silakan Pilih Pasangan Definitif --</option>${matchOptions.map(o => `<option value="${o.val}">${o.text}</option>`).join('')}</select></div>`;
+      });
+      document.getElementById("match-container").innerHTML = matchHTML;
+    };
+
+    function hitungKuis() {
+      if(namaSiswaGlobal === "" || kelasSiswaGlobal === "") { 
+        alert("HARAP ISI NAMA LENGKAP & KELAS ANDA DI MENU 'DATA SISWA' (TOMBOL BIRU MUDA PALING KIRI) SEBELUM MENGIRIM LEMBAR KUIS INI!");
+        showSection('sec-datasiswa'); return; 
+      }
+
+      const btnKirim = document.getElementById('btnKirimKuis');
+      btnKirim.disabled = true;
+      btnKirim.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sedang Melakukan Transmisi Data...';
+      document.getElementById('notifTerekam').style.display = 'block';
+
+      let skorPG = 0; let skorMatch = 0; let skorEsai = 0; let skorLKPD = 0;
+
+      for (let i = 1; i <= 5; i++) { if(document.getElementById('lkpd' + i).value.trim().length > 10) skorLKPD += 4; }
+      
+      pgData.forEach((item, i) => { const selected = document.querySelector(`input[name="pg${i}"]:checked`); if(selected && parseInt(selected.value) === item.ans) skorPG += 5; });
+      
+      // LOGIKA BARU MENGHITUNG SOAL MENJODOHKAN (1 Benar = 3.3 | 2 Benar = 6.7 | 3 Benar = 10)
+      let matchCorrectCount = 0;
+      matchData.forEach((item) => { 
+          const val = document.getElementById(item.id).value; 
+          if(val === item.ans) matchCorrectCount++; 
+      });
+      
+      if (matchCorrectCount === 1) skorMatch = 3.3;
+      else if (matchCorrectCount === 2) skorMatch = 6.7;
+      else if (matchCorrectCount === 3) skorMatch = 10;
+      else skorMatch = 0;
+
+      if(document.getElementById('esai1').value.trim().length > 20) skorEsai += 10;
+      if(document.getElementById('esai2').value.trim().length > 20) skorEsai += 10;
+
+      const totalSkor = skorLKPD + skorPG + skorMatch + skorEsai;
+
+      document.getElementById('hasilKuis').style.display = 'block';
+      
+      document.getElementById('skorDisplay').innerText = (totalSkor % 1 === 0) ? totalSkor : totalSkor.toFixed(1);
+      document.getElementById('sLkpd').innerText = skorLKPD;
+      document.getElementById('sPg').innerText = skorPG;
+      document.getElementById('sMatch').innerText = skorMatch;
+      document.getElementById('sEsai').innerText = skorEsai;
+
+      const payloadData = { action: 'submit', nama: namaSiswaGlobal, kelas: kelasSiswaGlobal, lkpd: skorLKPD, pg: skorPG, match: skorMatch, esai: skorEsai, total: totalSkor };
+      
+      document.getElementById('wadahLeaderboard').style.display = 'block';
+      fetchLeaderboardData(payloadData);
+    }
+
+    function fetchLeaderboardData(payloadData) {
+      document.getElementById('leaderboardBody').innerHTML = '<tr><td colspan="4" style="text-align:center; font-style:italic;">Sedang membuat koneksi ke Database Google Sheet...</td></tr>';
+      
+      if (!payloadData) { payloadData = { action: 'get_only' }; }
+
+      fetch(URL_WEB_APP, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(payloadData) })
+      .then(response => response.json())
+      .then(data => {
+         if (data.status === "success") {
+            let leaderHTML = "";
+            let namaCurrent = namaSiswaGlobal;
+
+            data.leaderboard.forEach((siswa, index) => {
+              let rankIcon = (index + 1);
+              if(index === 0) rankIcon = '<i class="fa-solid fa-medal rank-1"></i>';
+              if(index === 1) rankIcon = '<i class="fa-solid fa-medal rank-2"></i>';
+              if(index === 2) rankIcon = '<i class="fa-solid fa-medal rank-3"></i>';
+              
+              let rowStyle = (siswa.nama === namaCurrent && namaCurrent !== "") ? 'background:#e0f2fe; font-weight:900; color:#0369a1;' : '';
+              let finalSkorStr = (siswa.skor % 1 === 0) ? siswa.skor : parseFloat(siswa.skor).toFixed(1);
+              
+              leaderHTML += `<tr style="${rowStyle}"><td>${rankIcon}</td><td>${siswa.nama}</td><td>${siswa.kelas}</td><td style="color:var(--c-blue); font-size:1.2rem;">${finalSkorStr}</td></tr>`;
+            });
+            
+            if (data.leaderboard.length === 0) { leaderHTML = '<tr><td colspan="4" style="text-align:center; font-style:italic; color:#64748b;">Belum ada record murid yang tersimpan di sistem.</td></tr>'; }
+            document.getElementById('leaderboardBody').innerHTML = leaderHTML;
+            
+            if(payloadData.action === 'submit') {
+              document.getElementById('btnKirimKuis').innerHTML = '<i class="fa-solid fa-check"></i> Lembar Evaluasi Berhasil Terkunci & Terkirim';
+            }
+         }
+      })
+      .catch(error => {
+         console.error("Error Fetching API:", error);
+         document.getElementById('leaderboardBody').innerHTML = '<tr><td colspan="4" style="text-align:center; color:red; font-weight:bold;">Terjadi Kegagalan Sinkronisasi Server. Silakan cek URL Endpoint.</td></tr>';
+      });
+    }
+  </script>
+</body>
+</html>
